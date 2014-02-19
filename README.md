@@ -1,4 +1,4 @@
 chatify
 =======
 
-A chat application built using Gulp, Node.js and AngularJS
+A chat application built using Gulp, Node, Bootstrap and Angular
