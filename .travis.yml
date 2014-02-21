@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - '0.10'
+before_script:
+  - gem update --system
+  - gem install sass
+  - npm install -g coffee-script
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: eL2fJ8f6l8eSAurbgiLet4x8wPes1gBh1mZIrFdXJSpPZceESxusisvIQ6Qa+wRS295yayGjD5cfV9FWUbj8/W8KWPkeLbObKteQTyYQUTqrcp1i7jLfS3VYDmc/GEPSnL7+eA5wgUxiOUQXyt4IcDBySi6Fv+BYEBqr6q5qUFI=
+  app: imify
+  on:
+    branch: master
+    repo: apergy/imify

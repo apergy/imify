@@ -1,0 +1,41 @@
+{
+  "name": "IMify",
+  "description": "A chat application built using Gulp, Node, Bootstrap and Angular",
+  "version": "0.1.0",
+  "homepage": "https://github.com/apergy/imify",
+  "author": {
+    "name": "Richard Edwards",
+    "email": "richard@apergy.co.uk",
+    "url": "http://www.apergy.co.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/apergy/imify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apergy/imify/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/apergy/imify/blob/master/LICENSE"
+    }
+  ],
+  "main": "core/server/imify",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "gulp --require coffee-script/register sass"
+  },
+  "dependencies": {
+    "coffee-script": "~1.7.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.5.2",
+    "gulp-util": "^2.2.14",
+    "gulp-clean": "^0.2.4",
+    "gulp-sass": "^0.7.0"
+  },
+  "keywords": []
+}
