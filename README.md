@@ -6,3 +6,5 @@ A chat application built using Gulp, Node, Bootstrap and Angular
 Demo
 ----
 http://imify.herokuapp.com/
+
+Hello, World!
