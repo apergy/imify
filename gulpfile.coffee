@@ -3,6 +3,7 @@ gutil = require 'gulp-util'
 clean = require 'gulp-clean'
 bower = require 'gulp-bower'
 sass = require 'gulp-sass'
+coffee = require 'gulp-coffee'
 
 gulp.task 'bower', () ->
   bower()
@@ -16,4 +17,9 @@ gulp.task 'sass', () ->
     .pipe sass( outputStyle: 'compressed' )
     .pipe gulp.dest('dist/css')
 
-gulp.task 'default', [ 'bower', 'sass' ]
+gulp.task 'coffee', () ->
+  gulp.src 'core/client/src/**/*.coffee'
+    .pipe coffee()
+    .pipe gulp.dest('dist/js')
+
+gulp.task 'default', [ 'bower', 'sass', 'coffee' ]

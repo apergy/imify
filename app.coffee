@@ -9,6 +9,6 @@ io = socketio.listen server
 app.use express.static __dirname + '/dist'
 
 app.get '/', (request, response) ->
-  response.render 'index.html'
+  response.sendfile 'index.html'
 
 server.listen process.env.PORT || 3000

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="imifyApp">
     <head>
         <title>IMify</title>
         <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body>
+    <body ng-controller="ChatCtrl">
         <div class="site-wrapper">
           <div class="site-wrapper-inner">
             <div class="cover-container">
@@ -21,7 +21,7 @@
                       <a href="#">Friends</a>
                     </li>
                     <li>
-                      <a href="#">Account</a>
+                      <a href="#">Messages ({{messages.length}})</a>
                     </li>
                   </ul>
                 </div>
@@ -47,6 +47,7 @@
         <script src="component/jquery/dist/jquery.min.js"></script>
         <script src="component/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="component/angular/angular.min.js"></script>
+        <script src="js/imify.js"></script>
+        <script src="js/controller/chat.js"></script>
     </body>
 </html>
-
