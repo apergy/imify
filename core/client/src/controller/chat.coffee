@@ -1,4 +1,4 @@
-@imifyApp.controller 'ChatCtrl', ($scope) ->
+@imifyApp.controller 'chatCtrl', ($scope) ->
   $scope.messages = [
     'Hello World',
     'Hello Chatter'
