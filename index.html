@@ -7,6 +7,12 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body ng-controller="chatCtrl">
+        <aside>
+          <ul>
+            <li ng-repeat="user in users">{{user}}</li>
+          </ul>
+        </aside>
+
         <div class="site-wrapper">
           <div class="site-wrapper-inner">
             <div class="cover-container">
@@ -63,8 +69,8 @@
         <script src="component/socket.io-client/dist/socket.io.min.js"></script>
         <script src="component/angular/angular.min.js"></script>
         <script src="js/imify.js"></script>
-        <script src="js/service/socket.js"></script>
-        <script src="js/directive/ngEnter.js"></script>
+        <script src="js/shared/service/socket.js"></script>
+        <script src="js/shared/directive/ngEnter.js"></script>
         <script src="js/controller/chat.js"></script>
     </body>
 </html>
