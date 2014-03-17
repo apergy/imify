@@ -26,20 +26,18 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "gulp --require coffee-script/register"
+    "test": "gulp"
   },
   "dependencies": {
-    "coffee-script": "~1.7.1",
     "express": "^3.4.8",
     "socket.io": "^0.9.16"
   },
   "devDependencies": {
     "gulp": "^3.5.2",
-    "gulp-util": "^2.2.14",
     "gulp-clean": "^0.2.4",
     "gulp-sass": "^0.7.0",
     "gulp-bower": "0.0.2",
-    "gulp-coffee": "^1.4.1"
+    "gulp-watch": "^0.5.0"
   },
   "keywords": []
 }

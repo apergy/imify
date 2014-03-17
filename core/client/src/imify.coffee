@@ -1,1 +1,0 @@
-@imifyApp = angular.module 'imifyApp', []
