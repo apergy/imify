@@ -1,152 +1,52 @@
-/*
- * Globals
- */
+$turquoise: #1ABC9C;
+$emerald: #2ECC71;
+$peter-river: #3498DB;
+$amthyst: #9B59B6;
+$wet-asphalt: #34495E;
+$green-sea: #16A085;
+$nephritis: #27AE60;
+$belize-hole: #2980B9;
+$wisteria: #8E44AD;
+$midnight-blue: #2C3E50;
+$sun-flower: #F1C40F;
+$carrot: #E67E22;
+$alizarin: #E74C3C;
+$clouds: #ECF0F1;
+$concrete: #95A5A6;
+$orange: #F39C12;
+$pumpkin: #D35400;
+$pomegranate: #C0392B;
+$silver: #BDC3C7;
+$asbestos: #7F8C8D;
 
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
+@import "base";
+@import "layout";
+@import "module/message-list";
+
+section {
+  background: $clouds;
 }
 
-/* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+section > .message-list > div > img {
+  width: 40px; height: 40px;
+  border-radius: 5px;
 }
 
-/*
- * Base structure
- */
-html,
-body {
-  height: 100%;
-  background-color: #333;
-}
-body {
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+section > .message-list > div > ul {
+  padding: 10px 15px;
+  border-radius: 5px;
+  list-style: none;
 }
 
-/* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
-  display: table;
+footer {
+  padding: 10px;
+  background: $concrete;
+}
+
+footer > input {
   width: 100%;
-  height: 100%; /* For at least Firefox */
-  min-height: 100%;
-}
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-}
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-/* Padding for spacing */
-.inner {
-  padding: 30px;
-}
-
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
-
-/*
- * Cover
- */
-.cover {
-  padding: 0 20px;
-}
-.cover .btn-lg {
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
-/*
- * Footer
- */
-.mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
-}
-
-/*
- * Affix and center
- */
-@media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
-}
-
-@media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 700px;
-  }
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: $clouds;
 }

@@ -9,6 +9,7 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
   });
 
   socket.on('send:message', function (message) {
+    message.type = ($scope.name === message.user) ? 'to' : 'from';
     $scope.messages.push(message);
   });
 
@@ -18,7 +19,7 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
 
   socket.on('user:join', function (data) {
     $scope.messages.push({
-      user: 'root',
+      type: 'system',
       text: data.name + ' has joined.'
     });
 
@@ -27,7 +28,7 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
 
   socket.on('user:left', function (data) {
     $scope.messages.push({
-      user: 'root',
+      type: 'system',
       text: data.name + ' has left.'
     });
   });
@@ -50,8 +51,9 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
       text: $scope.message
     };
 
-    $scope.messages.push(data);
     socket.emit('send:message', data);
+    data.type = 'to';
+    $scope.messages.push(data);
     $scope.message = '';
   };
 });

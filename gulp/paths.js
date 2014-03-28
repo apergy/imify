@@ -1,11 +1,13 @@
 module.exports = {
-  bower: './bower.json',
   sass: './core/assets/scss/**/*.scss',
   js: './core/client/src/**/*.js',
+  main: {
+    sass: './core/assets/scss/main.scss'
+  },
   dist: {
     main: './dist',
-    js: './dist/js',
+    component: './dist/component',
     css: './dist/css',
-    component: './dist/component'
+    js: './dist/js'
   }
 };

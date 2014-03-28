@@ -1,76 +1,48 @@
 <!DOCTYPE html>
-<html ng-app="imifyApp">
+<html lang="en" ng-app="imifyApp">
     <head>
-        <title>IMify</title>
-        <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="component/angular/angular-csp.css">
-        <link rel="stylesheet" href="css/main.css">
+      <title>IMify</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+      <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" href="component/angular/angular-csp.css">
+      <link rel="stylesheet" href="css/main.css">
     </head>
     <body ng-controller="chatCtrl">
-        <aside>
-          <ul>
-            <li ng-repeat="user in users">{{user}}</li>
-          </ul>
-        </aside>
-
-        <div class="site-wrapper">
-          <div class="site-wrapper-inner">
-            <div class="cover-container">
-              <div class="masthead clearfix">
-                <div class="inner">
-                  <h3 class="masthead-brand">IMify</h3>
-
-                  <ul class="nav masthead-nav">
-                    <li class="active">
-                      <a href="#">{{name}}'s Dashboard</a>
-                    </li>
-                    <li>
-                      <a href="#">Friends</a>
-                    </li>
-                    <li>
-                      <a href="#">Messages ({{messages.length}})</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="inner cover" ng-hide="name">
-                <p class="lead">
-                  <input type="text" class="form-control input-lg" placeholder="What's your name?" ng-model="newName">
-                </p>
-                <p class="lead">
-                  <button class="btn btn-lg btn-default" ng-click="setName()">Start Conversation</button>
-                </p>
-              </div>
-
-              <div class="inner cover" ng-show="name">
-                <ul class="messages">
-                  <li ng-repeat="message in messages">
-                    <span class="user">{{message.user}}</span>
-                    <span class="text">{{message.text}}</span>
-                  </li>
-                </ul>
-                <p class="lead">
-                  <input type="text" class="form-control input-lg" placeholder="Enter your message..." ng-enter="sendMessage()" ng-model="message">
-                </p>
-              </div>
-
-              <div class="mastfoot">
-                <div class="inner">
-                  <p>IMify creator <a href="https://twitter.com/apergydev">@apergydev</a>.</p>
-                </div>
-              </div>
-            </div>
+      <section>
+        <div class="message-list">
+          <div ng-repeat="message in messages" ng-class="message.type">
+            <small ng-bind="message.user">Guest</small>
+            <ul>
+              <li ng-bind="message.text">Example message</li>
+            </ul>
           </div>
         </div>
 
-        <script src="component/jquery/dist/jquery.min.js"></script>
-        <script src="component/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="component/socket.io-client/dist/socket.io.min.js"></script>
-        <script src="component/angular/angular.min.js"></script>
-        <script src="js/imify.js"></script>
-        <script src="js/shared/service/socket.js"></script>
-        <script src="js/shared/directive/ngEnter.js"></script>
-        <script src="js/controller/chat.js"></script>
-    </body>
+        <footer>
+          <input
+            type="text"
+            placeholder="What's your name?"
+            ng-enter="setName()"
+            ng-model="newName"
+            ng-hide="name">
+          <input
+            type="text"
+            placeholder="Enter your message..."
+            ng-enter="sendMessage()"
+            ng-model="message"
+            ng-show="name">
+        </footer>
+      </section>
+
+      <script src="component/jquery/dist/jquery.min.js"></script>
+      <script src="component/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="component/socket.io-client/dist/socket.io.min.js"></script>
+      <script src="component/angular/angular.min.js"></script>
+      <script src="js/imify.js"></script>
+      <script src="js/shared/service/socket.js"></script>
+      <script src="js/shared/directive/ng-enter.js"></script>
+      <script src="js/controller/chat.js"></script>
+  </body>
 </html>

@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     paths = require('./paths');
 
 module.exports = function () {
-  return gulp.src(paths.sass)
+  return gulp.src(paths.main.sass)
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(gulp.dest(paths.dist.css))
 };
