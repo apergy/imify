@@ -23,8 +23,9 @@ $asbestos: #7F8C8D;
 @import "layout";
 @import "module/message-list";
 
-section {
+body {
   background: $clouds;
+  padding-bottom: 60px;
 }
 
 section > .message-list > div > img {

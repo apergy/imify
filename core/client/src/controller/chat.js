@@ -4,6 +4,18 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
   $scope.message = '';
   $scope.messages = [];
 
+  var renameUser = function (oldName, newName) {
+        var index = $scope.users.indexOf(oldName);
+        $scope.users[index] = newName;
+      },
+      scrollToBottom = function () {
+        setTimeout(function () {
+          $('html, body').animate({
+            scrollTop: $(document).height() - $(window).height()
+          });
+        }, 50);
+      };
+
   socket.on('init', function (data) {
     $scope.users = data.users;
   });
@@ -11,6 +23,7 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
   socket.on('send:message', function (message) {
     message.type = ($scope.name === message.user) ? 'to' : 'from';
     $scope.messages.push(message);
+    scrollToBottom();
   });
 
   socket.on('change:name', function (data) {
@@ -24,6 +37,7 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
     });
 
     $scope.users.push(data.name);
+    scrollToBottom();
   });
 
   socket.on('user:left', function (data) {
@@ -31,12 +45,9 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
       type: 'system',
       text: data.name + ' has left.'
     });
+    scrollToBottom();
   });
 
-  var renameUser = function (oldName, newName) {
-    var index = $scope.users.indexOf(oldName);
-    $scope.users[index] = newName;
-  };
 
   $scope.setName = function () {
     var data = { name: $scope.newName };
@@ -55,5 +66,6 @@ imifyApp.controller('chatCtrl', function ($scope, socket) {
     data.type = 'to';
     $scope.messages.push(data);
     $scope.message = '';
+    scrollToBottom();
   };
 });
