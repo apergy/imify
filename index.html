@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="imifyApp">
+<html lang="en">
     <head>
       <title>IMify</title>
 
@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="component/angular/angular-csp.css">
       <link rel="stylesheet" href="css/main.css">
     </head>
-    <body ng-controller="chatCtrl">
+    <body id="imify-app" ng-controller="chat-controller">
       <section>
         <div class="message-list">
           <div ng-repeat="message in messages" ng-class="message.type">
@@ -38,11 +38,6 @@
 
       <script src="component/jquery/dist/jquery.min.js"></script>
       <script src="component/bootstrap/dist/js/bootstrap.min.js"></script>
-      <script src="component/socket.io-client/dist/socket.io.min.js"></script>
-      <script src="component/angular/angular.min.js"></script>
-      <script src="js/imify.js"></script>
-      <script src="js/shared/service/socket.js"></script>
-      <script src="js/shared/directive/ng-enter.js"></script>
-      <script src="js/controller/chat.js"></script>
+      <script data-main="js/main" src="component/requirejs/require.js"></script>
   </body>
 </html>
