@@ -2,5 +2,5 @@
 
 define(function (require) {
   var angular = require('angular');
-  return angular.module('imify-app', []);
+  return angular.module('imifyApp', []);
 });

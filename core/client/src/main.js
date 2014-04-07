@@ -17,7 +17,7 @@ require([
   'app',
   'controller/chat',
   'shared/service/socket',
-  'shared/directive/ng-enter'
+  'shared/directive/ngEnter'
 ], function (angular) {
-  angular.bootstrap(document, [ 'imify-app' ]);
+  angular.bootstrap(document, [ 'imifyApp' ]);
 });
