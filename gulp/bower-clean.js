@@ -3,6 +3,6 @@ var gulp = require('gulp'),
     paths = require('./paths');
 
 module.exports = function () {
-  return gulp.src(paths.dist.main, { read: false })
+  return gulp.src(paths.dist.component, { read: false })
     .pipe(clean());
 };

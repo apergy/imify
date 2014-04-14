@@ -12,6 +12,7 @@
     "bootstrap": "~3.0.3",
     "socket.io-client": "~0.9.16",
     "angular": "~1.2.13",
-    "requirejs": "~2.1.11"
+    "requirejs": "~2.1.11",
+    "almond": "~0.2.9"
   }
 }
