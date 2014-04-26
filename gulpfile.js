@@ -14,4 +14,4 @@ gulp.task('js-run', [ 'js-clean' ], require('./gulp/js-run'));
 gulp.task('js', [ 'js-run' ]);
 
 gulp.task('watch', require('./gulp/watch'));
-gulp.task('default', [ 'bower', 'sass', 'js' ]);
+gulp.task('default', [ 'sass', 'js' ]);

@@ -3,7 +3,7 @@
 define(function (require) {
   var app = require('app');
 
-  return app.directive('ngEnter', function () {
+  var NgEnter = function () {
     return function ($scope, element, attrs) {
       element.bind('keydown keypress', function (event) {
         if (event.which === 13) {
@@ -14,5 +14,10 @@ define(function (require) {
         }
       });
     };
-  });
+  };
+
+  return app.directive(
+    'ngEnter',
+    NgEnter
+  );
 });

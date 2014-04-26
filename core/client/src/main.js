@@ -1,17 +1,5 @@
 'use strict';
 
-require.config({
-  paths: {
-    angular: '../component/angular/angular',
-    io: '../component/socket.io-client/dist/socket.io'
-  },
-  shim: {
-    angular: {
-      exports: 'angular'
-    }
-  }
-});
-
 require([
   'angular',
   'app',

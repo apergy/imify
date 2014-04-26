@@ -3,7 +3,7 @@
 define(function (require) {
   var app = require('app');
 
-  return app.controller('chatController', function ($scope, socket) {
+  var ChatController = function ($scope, socket) {
     $scope.name = '';
     $scope.users = [];
     $scope.message = '';
@@ -73,5 +73,10 @@ define(function (require) {
       $scope.message = '';
       scrollToBottom();
     };
-  });
+  };
+
+  return app.controller(
+    'ChatController',
+    [ '$scope', 'socket', ChatController ]
+  );
 });
