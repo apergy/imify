@@ -4,7 +4,7 @@ define(function (require) {
   var app = require('app'),
       io = require('io');
 
-  return app.factory('socket', function ($rootScope) {
+  var Socket = function ($rootScope) {
     var socket = io.connect();
 
     return {
@@ -33,5 +33,10 @@ define(function (require) {
         socket.emit(name, data);
       }
     };
-  });
+  };
+
+  return app.factory(
+    'socket',
+    [ '$rootScope', Socket ]
+  );
 });

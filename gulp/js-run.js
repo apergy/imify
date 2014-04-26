@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     rjs = require('gulp-requirejs'),
+    uglify = require('gulp-uglify'),
     paths = require('./paths');
 
 module.exports = function () {
@@ -17,5 +18,7 @@ module.exports = function () {
       io: { exports: 'io' }
     },
     out: 'app.js'
-  }).pipe(gulp.dest(paths.dist.js));
+  })
+  .pipe(uglify({ outSourceMap: true }))
+  .pipe(gulp.dest(paths.dist.js));
 };
