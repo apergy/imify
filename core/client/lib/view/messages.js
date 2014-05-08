@@ -2,6 +2,7 @@
 
 var Backbone = require('backbone'),
     Message = require('./../view/message'),
+    io = require('socket.io-browserify'),
     entity = require('./../factory/entity');
 
 module.exports = Backbone.View.extend({

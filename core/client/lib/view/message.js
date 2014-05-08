@@ -23,11 +23,11 @@ module.exports = Backbone.View.extend({
   },
 
   /**
-   * Returns the direction of the message
-   * @return {String}
+   * Returns if the message is from system
+   * @return {Boolean}
    */
-  direction: function () {
-    return this.currentUser === this.model.get('user') ? 'to' : 'from';
+  isSystem: function () {
+    return this.model.get('type') === 'system';
   },
 
   /**
@@ -51,7 +51,7 @@ module.exports = Backbone.View.extend({
    * @return {Backbone.Model}
    */
   render: function () {
-    this.$el.addClass(this.direction());
+    this.$el.addClass(this.model.get('type'));
     this.$el.html(this.template(this));
     return this;
   }
