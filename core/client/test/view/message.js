@@ -1,6 +1,6 @@
 'use strict';
 
-var Message = require('../../lib/view/Message');
+var Message = require('../../lib/view/message');
 
 describe('View', function () {
   describe('Message', function () {

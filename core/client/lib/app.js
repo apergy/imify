@@ -4,10 +4,10 @@
 var Backbone = require('backbone');
     Backbone.$ = require('jquery');
 
-var Messages = require('./view/Messages'),
+var Messages = require('./view/messages'),
     messages = new Messages();
 
-var NewMessage = require('./view/NewMessage'),
+var NewMessage = require('./view/newMessage'),
     newMessage = new NewMessage();
 
 var section = document.getElementsByTagName('section')[0];
