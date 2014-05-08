@@ -21,33 +21,13 @@ $asbestos: #7F8C8D;
 
 @import "base";
 @import "layout";
-@import "module/messageList";
+@import "module/messages";
+@import "module/message";
+@import "module/newMessage";
 
 body {
   background: $clouds;
   padding-bottom: 60px;
-}
-
-section > .message-list > div > img {
-  width: 40px; height: 40px;
-  border-radius: 5px;
-}
-
-section > .message-list > div > ul {
-  padding: 10px 15px;
-  border-radius: 5px;
-  list-style: none;
-}
-
-footer {
-  padding: 10px;
-  background: $concrete;
-}
-
-footer > input {
-  width: 100%;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background: $clouds;
+  font-family: Helvetica Neue;
+  font-size: 16px;
 }

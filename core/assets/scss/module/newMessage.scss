@@ -1,0 +1,13 @@
+.new-message {
+  padding: 10px;
+  padding-right: 40px; // Stops overlapping
+  background: $concrete;
+
+  input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: $clouds;
+    font-size: 14px;
+  }
+}

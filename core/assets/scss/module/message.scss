@@ -1,0 +1,62 @@
+.message {
+  margin: 10px 0;
+  color: $concrete;
+
+  p {
+    position: relative;
+    margin: 5px 0; padding: 10px;
+  }
+
+  p:before {
+    position: absolute;
+    top: 10px;
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+}
+
+.system {
+  text-align: center;
+}
+
+.to {
+  text-align: right;
+
+  p {
+    margin-left: 100px;
+    background: $peter-river;
+    color: $clouds;
+  }
+
+  p:before {
+    right: -5px;
+    border-left: 10px solid $peter-river;
+  }
+}
+
+.to + .to small {
+  display: none;
+}
+
+.from {
+  text-align: left;
+
+  p {
+    margin-right: 100px;
+    background: $silver;
+    color: $midnight-blue;
+  }
+
+  p:before {
+    left: -5px;
+    border-right: 10px solid $silver;
+  }
+}
+
+.from + .from small {
+  display: none;
+}

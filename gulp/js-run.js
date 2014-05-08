@@ -1,24 +1,16 @@
 var gulp = require('gulp'),
-    rjs = require('gulp-requirejs'),
+    browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
     paths = require('./paths');
 
 module.exports = function () {
-  return rjs({
-    baseUrl: 'core/client/src',
-    name: '../../../cache/almond/almond',
-    deps: [ 'main' ],
-    insertRequire: [ 'main' ],
-    paths: {
-      angular: '../../../cache/angular/angular',
-      io: '../../../cache/socket.io-client/dist/socket.io'
-    },
-    shim: {
-      angular: { exports: 'angular' },
-      io: { exports: 'io' }
-    },
-    out: 'app.js'
-  })
-  .pipe(uglify({ outSourceMap: true }))
-  .pipe(gulp.dest(paths.dist.js));
+  return gulp.src(paths.main.js)
+    .pipe(browserify({
+      insertGlobals: true,
+      transform: [ 'hbsfy' ]
+    }))
+    .pipe(uglify({
+      outSourceMap: true
+    }))
+    .pipe(gulp.dest(paths.dist.js));
 };
