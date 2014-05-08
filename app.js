@@ -1,7 +1,7 @@
 var express = require('express'),
     http = require('http'),
     socketio = require('socket.io'),
-    socket = require('./core/server/src/service/socket');
+    socket = require('./core/server/lib/service/socket');
 
 var app = express(),
     server = http.createServer(app),

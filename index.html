@@ -2,42 +2,12 @@
 <html lang="en">
     <head>
       <title>IMify</title>
-
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-      <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
-      <link rel="stylesheet" href="component/angular/angular-csp.css">
       <link rel="stylesheet" href="css/main.css">
     </head>
-    <body id="imifyApp" ng-controller="ChatController">
-      <section>
-        <div class="message-list">
-          <div ng-repeat="message in messages" ng-class="message.type">
-            <small ng-bind="message.user">Guest</small>
-            <ul>
-              <li ng-bind="message.text">Example message</li>
-            </ul>
-          </div>
-        </div>
-
-        <footer>
-          <input
-            type="text"
-            placeholder="What's your name?"
-            ng-enter="setName()"
-            ng-model="newName"
-            ng-hide="name">
-          <input
-            type="text"
-            placeholder="Enter your message..."
-            ng-enter="sendMessage()"
-            ng-model="message"
-            ng-show="name">
-        </footer>
-      </section>
-
-      <script src="component/jquery/dist/jquery.min.js"></script>
-      <script src="component/bootstrap/dist/js/bootstrap.min.js"></script>
+    <body>
+      <section></section>
+      <footer></footer>
       <script src="js/app.js"></script>
   </body>
 </html>
