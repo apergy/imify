@@ -11,15 +11,25 @@ module.exports = Backbone.Collection.extend({
   model: require('./../model/message'),
 
   /**
-   * [initialize description]
-   * @param  {[type]} models  [description]
-   * @param  {[type]} options [description]
-   * @return {[type]}         [description]
+   * Gets the socket connections and listens for messages
+   * @param  {Array} models
+   * @param  {Object} options
    */
   initialize: function (models, options) {
     this.socket = io.connect();
+    this.socket.on('user:join', this.announceUser.bind(this));
     this.socket.on('send:message', this.recieveMessage.bind(this));
-    this.on('add', this.sendMessage, this);
+  },
+
+  /**
+   * Announces a new user has joined
+   * @param  {Object} data
+   */
+  announceUser: function (data) {
+    this.add({
+      type: 'system',
+      user: new User(data.user)
+    });
   },
 
   /**
@@ -28,14 +38,9 @@ module.exports = Backbone.Collection.extend({
    */
   recieveMessage: function (data) {
     this.add({
+      type: 'from',
       user: new User(data.user),
       message: data.message
     });
-  },
-
-  sendMessage: function (model, collection, options) {
-    if (options.send) {
-      this.socket.emit('send:message', model.toJSON());
-    }
   }
 });

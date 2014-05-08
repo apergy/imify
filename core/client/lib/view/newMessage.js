@@ -1,6 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone'),
+    io = require('socket.io-browserify'),
     entity = require('./../factory/entity');
 
 module.exports = Backbone.View.extend({
@@ -26,6 +27,7 @@ module.exports = Backbone.View.extend({
    * @param  {Object} options
    */
   initialize: function (options) {
+    this.socket = io.connect();
     this.collection = entity.getMessages();
     this.currentUser = entity.getCurrentUser();
   },
@@ -49,6 +51,9 @@ module.exports = Backbone.View.extend({
    */
   setName: function (name) {
     this.currentUser.set('name', name);
+    this.socket.emit('user:join', {
+      user: this.currentUser.toJSON()
+    });
   },
 
   /**
@@ -57,9 +62,16 @@ module.exports = Backbone.View.extend({
    */
   addMessage: function (message) {
     this.collection.add({
+      type: 'to',
       user: this.currentUser,
       message: message
-    }, { send: true });
+    });
+
+    this.socket.emit('send:message', {
+      type: 'from',
+      user: this.currentUser.toJSON(),
+      message: message
+    });
   },
 
   /**

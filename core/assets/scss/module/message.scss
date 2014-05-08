@@ -38,10 +38,6 @@
   }
 }
 
-.to + .to small {
-  display: none;
-}
-
 .from {
   text-align: left;
 
@@ -55,8 +51,4 @@
     left: -5px;
     border-right: 10px solid $silver;
   }
-}
-
-.from + .from small {
-  display: none;
 }
