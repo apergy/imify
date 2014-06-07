@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone'),
-    io = require('socket.io-browserify'),
+    io = require('socket.io-client'),
     User = require('./../model/user');
 
 module.exports = Backbone.Collection.extend({

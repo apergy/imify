@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone'),
-    io = require('socket.io-browserify'),
+    io = require('socket.io-client'),
     entity = require('./../factory/entity');
 
 module.exports = Backbone.View.extend({
