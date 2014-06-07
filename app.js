@@ -1,11 +1,8 @@
 var express = require('express'),
-    http = require('http'),
-    socketio = require('socket.io'),
-    socket = require('./core/server/lib/service/socket');
-
-var app = express(),
-    server = http.createServer(app),
-    io = socketio.listen(server);
+    app = express(),
+    server = require('http').Server(app),
+    io = require('socket.io')(server),
+    socketService = require('./core/server/lib/service/socket');
 
 app.use(express.static(__dirname + '/dist'));
 
@@ -13,5 +10,5 @@ app.get('/', function (request, response) {
   response.sendfile('index.html');
 });
 
-io.on('connection', socket);
+io.on('connection', socketService);
 server.listen(process.env.PORT || 3000);
