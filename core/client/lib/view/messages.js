@@ -12,9 +12,8 @@ module.exports = Backbone.View.extend({
 
   /**
    * Starts the messages collection
-   * @param  {Object} options
    */
-  initialize: function (options) {
+  initialize: function () {
     this.collection = entity.getMessages();
     this.listenTo(this.collection, 'add', this.renderOne);
   },

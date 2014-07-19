@@ -16,9 +16,8 @@ module.exports = Backbone.View.extend({
 
   /**
    * Gets the current user
-   * @param  {Object} options
    */
-  initialize: function (options) {
+  initialize: function () {
     this.currentUser = entity.getCurrentUser();
   },
 

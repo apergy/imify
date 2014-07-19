@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     clean = require('gulp-clean'),
     paths = require('./paths');

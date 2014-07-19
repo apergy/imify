@@ -12,10 +12,8 @@ module.exports = Backbone.Collection.extend({
 
   /**
    * Gets the socket connections and listens for messages
-   * @param  {Array} models
-   * @param  {Object} options
    */
-  initialize: function (models, options) {
+  initialize: function () {
     this.socket = io.connect();
     this.socket.on('user:join', this.announceUser.bind(this));
     this.socket.on('send:message', this.recieveMessage.bind(this));

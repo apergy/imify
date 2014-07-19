@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   sass: './core/assets/scss/**/*.scss',
   js: './core/client/lib/**/*.js',

@@ -24,9 +24,8 @@ module.exports = Backbone.View.extend({
 
   /**
    * Gets the messages and current user
-   * @param  {Object} options
    */
-  initialize: function (options) {
+  initialize: function () {
     this.socket = io.connect();
     this.collection = entity.getMessages();
     this.currentUser = entity.getCurrentUser();
