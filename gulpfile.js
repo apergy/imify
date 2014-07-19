@@ -1,5 +1,4 @@
-var gulp = require('gulp'),
-    paths = require('./gulp/paths');
+var gulp = require('gulp');
 
 gulp.task('sass-clean', require('./gulp/sass-clean'));
 gulp.task('sass-run', [ 'sass-clean' ], require('./gulp/sass-run'));
