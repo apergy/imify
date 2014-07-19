@@ -2,8 +2,10 @@
 
 module.exports = {
   sass: './core/assets/scss/**/*.scss',
-  js: './core/lib/client/**/*.js',
-  test: './core/test/client/**/*.js',
+  js: {
+    lib: './core/lib/**/*.js',
+    test: './core/test/**/*.js'
+  },
   main: {
     sass: './core/assets/scss/main.scss',
     js: './core/lib/client/app.js'

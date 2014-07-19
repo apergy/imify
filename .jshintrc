@@ -64,5 +64,13 @@
     "wsh"           : false,
     "yui"           : false,
 
-    "globals"       : {}
+    "globals"       : {
+        "jasmine": true,
+        "beforeEach": true,
+        "afterEach": true,
+        "describe": true,
+        "it": true,
+        "spyOn": true,
+        "expect": true
+    }
 }
