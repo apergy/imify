@@ -1,8 +1,10 @@
+'use strict';
+
 var express = require('express'),
     app = express(),
     server = require('http').Server(app),
     io = require('socket.io')(server),
-    socketService = require('./core/server/lib/service/socket');
+    socketService = require('./core/lib/server/service/socket');
 
 app.use(express.static(__dirname + '/dist'));
 
