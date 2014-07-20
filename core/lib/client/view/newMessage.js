@@ -1,10 +1,10 @@
 'use strict';
 
-var Backbone = require('backbone'),
+var Marionette = require('backbone.marionette'),
     io = require('socket.io-client'),
     entity = require('./../factory/entity');
 
-module.exports = Backbone.View.extend({
+module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */
@@ -24,9 +24,8 @@ module.exports = Backbone.View.extend({
 
   /**
    * Gets the messages and current user
-   * @param  {Object} options
    */
-  initialize: function (options) {
+  initialize: function () {
     this.socket = io.connect();
     this.collection = entity.getMessages();
     this.currentUser = entity.getCurrentUser();

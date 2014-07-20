@@ -1,16 +1,16 @@
 'use strict';
 
-var Message = require('../../lib/view/message');
+var Messages = require('../../lib/client/view/messages');
 
 describe('View', function () {
-  describe('Message', function () {
+  describe('Messages', function () {
     beforeEach(function () {
-      this.message = new Message();
+      this.messages = new Messages();
     });
 
     describe('#className', function () {
       it('should be the right one', function () {
-        var actual = this.message.className;
+        var actual = this.messages.className;
         expect(actual).toBe('message-list');
       });
     });

@@ -1,10 +1,14 @@
+'use strict';
+
 module.exports = {
   sass: './core/assets/scss/**/*.scss',
-  js: './core/client/lib/**/*.js',
-  test: './core/client/test/**/*.js',
+  js: {
+    lib: './core/lib/**/*.js',
+    test: './core/test/**/*.js'
+  },
   main: {
     sass: './core/assets/scss/main.scss',
-    js: './core/client/lib/app.js'
+    js: './core/lib/client/main.js'
   },
   dist: {
     main: './dist',
