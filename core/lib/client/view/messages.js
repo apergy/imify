@@ -1,40 +1,23 @@
 'use strict';
 
-var Backbone = require('backbone'),
-    Message = require('./../view/message'),
+var Marionette = require('backbone.marionette'),
     entity = require('./../factory/entity');
 
-module.exports = Backbone.View.extend({
+module.exports = Marionette.CollectionView.extend({
   /**
    * @type {String}
    */
   className: 'messages',
 
   /**
+   * @type {Marionette.ItemView}
+   */
+  childView: require('./../view/message'),
+
+  /**
    * Starts the messages collection
    */
   initialize: function () {
     this.collection = entity.getMessages();
-    this.listenTo(this.collection, 'add', this.renderOne);
-  },
-
-  /**
-   * Appends the rendered message
-   * @param  {Backbone.Model} model
-   * @return {Backbone.View}
-   */
-  renderOne: function (model) {
-    var message = new Message({ model: model });
-    this.$el.append(message.render().el);
-    return this;
-  },
-
-  /**
-   * Renders each of the messages
-   * @return {Backbone.View}
-   */
-  render: function () {
-    this.collection.each(this.renderOne, this);
-    return this;
   }
 });

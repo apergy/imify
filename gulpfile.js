@@ -12,7 +12,5 @@ gulp.task('js-clean', require('./gulp/js-clean'));
 gulp.task('js-run', [ 'js-clean' ], require('./gulp/js-run'));
 gulp.task('js', [ 'js-run' ]);
 
-gulp.task('test', require('./gulp/test-run'));
-
 gulp.task('watch', require('./gulp/watch'));
 gulp.task('default', [ 'sass', 'jshint', 'js' ]);

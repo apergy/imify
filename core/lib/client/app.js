@@ -1,19 +1,34 @@
-(function () {
-	'use strict';
+'use strict';
 
-	// Backbone needs to be given jQuery
-	var Backbone = require('backbone');
-	    Backbone.$ = require('jquery');
+// Backbone needs to be given jQuery
+var Backbone = require('backbone');
+    Backbone.$ = require('jquery');
 
-	var Messages = require('./view/messages'),
-	    messages = new Messages();
+var Marionette = require('backbone.marionette'),
+    Messages = require('./view/messages'),
+    NewMessage = require('./view/newMessage'),
+    app = new Marionette.Application(),
+    messages = new Messages(),
+    newMessage = new NewMessage();
 
-	var NewMessage = require('./view/newMessage'),
-	    newMessage = new NewMessage();
+app.on('initialize:before', function (options) {
+    app.environment = options.environment;
+});
 
-	var section = document.getElementsByTagName('section')[0];
-	section.appendChild(messages.render().el);
+app.addRegions({
+    messages: 'section',
+    newMessage: 'footer'
+});
 
-	var footer = document.getElementsByTagName('footer')[0];
-	footer.appendChild(newMessage.render().el);
-})();
+app.addInitializer(function () {
+    app.messages.show(messages);
+    app.newMessage.show(newMessage);
+});
+
+app.on('initialize:after', function () {
+    if (Backbone.history) {
+        Backbone.history.start();
+    }
+});
+
+module.exports = app;

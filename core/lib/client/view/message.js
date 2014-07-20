@@ -1,9 +1,8 @@
 'use strict';
 
-var Backbone = require('backbone'),
-    entity = require('./../factory/entity');
+var Marionette = require('backbone.marionette');
 
-module.exports = Backbone.View.extend({
+module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */
@@ -18,40 +17,6 @@ module.exports = Backbone.View.extend({
    * Gets the current user
    */
   initialize: function () {
-    this.currentUser = entity.getCurrentUser();
-  },
-
-  /**
-   * Returns if the message is from system
-   * @return {Boolean}
-   */
-  isSystem: function () {
-    return this.model.get('type') === 'system';
-  },
-
-  /**
-   * Returns the name of the messages user
-   * @return {String}
-   */
-  name: function () {
-    return this.model.get('user').get('name');
-  },
-
-  /**
-   * Returns the message
-   * @return {String}
-   */
-  message: function () {
-    return this.model.get('message');
-  },
-
-  /**
-   * Renders the template with model
-   * @return {Backbone.Model}
-   */
-  render: function () {
     this.$el.addClass(this.model.get('type'));
-    this.$el.html(this.template(this));
-    return this;
   }
 });

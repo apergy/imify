@@ -1,10 +1,10 @@
 'use strict';
 
-var Backbone = require('backbone'),
+var Marionette = require('backbone.marionette'),
     io = require('socket.io-client'),
     entity = require('./../factory/entity');
 
-module.exports = Backbone.View.extend({
+module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */

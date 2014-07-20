@@ -8,7 +8,7 @@ module.exports = {
   },
   main: {
     sass: './core/assets/scss/main.scss',
-    js: './core/lib/client/app.js'
+    js: './core/lib/client/main.js'
   },
   dist: {
     main: './dist',
