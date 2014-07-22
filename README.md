@@ -10,10 +10,7 @@ http://imify.herokuapp.com/
 Todo
 ----
 
-- Replace Gulp with Grunt
 - Replace Browserify with RequireJS
 - Make use of Marionette entity requesters
 - Create shared server/client business logic
 - Add ability to see online users
-
-
