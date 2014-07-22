@@ -1,6 +1,6 @@
 'use strict';
 
-var NewMessage = require('../../lib/client/view/newMessage');
+var NewMessage = require('../../../lib/client/view/newMessage');
 
 describe('View', function () {
   describe('NewMessage', function () {
