@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-    default: [ 'jshint', 'browserify', 'sass' ]
+    default: [ 'jshint', 'concurrent:browserify', 'sass' ]
 };
