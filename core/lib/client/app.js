@@ -7,9 +7,7 @@ var Backbone = require('backbone');
 var Marionette = require('backbone.marionette'),
     Messages = require('./view/messages'),
     NewMessage = require('./view/newMessage'),
-    app = new Marionette.Application(),
-    messages = new Messages(),
-    newMessage = new NewMessage();
+    app = new Marionette.Application();
 
 app.on('initialize:before', function (options) {
     app.environment = options.environment;
@@ -21,8 +19,8 @@ app.addRegions({
 });
 
 app.addInitializer(function () {
-    app.messages.show(messages);
-    app.newMessage.show(newMessage);
+    app.messages.show(new Messages());
+    app.newMessage.show(new NewMessage());
 });
 
 app.on('initialize:after', function () {
