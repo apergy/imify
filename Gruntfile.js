@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = function (grunt) {
-    require('time-grunt')(grunt);
-    require('load-grunt-config')(grunt, {
-        jitGrunt: true,
-        loadGruntTasks: {
-            pattern: [ 'grunt-*', '!grunt-template-jasmine-istanbul' ]
-        }
-    });
+  require('time-grunt')(grunt);
+  require('load-grunt-config')(grunt, {
+    jitGrunt: true,
+    loadGruntTasks: {
+      pattern: [ 'grunt-*', '!grunt-template-jasmine-istanbul' ]
+    }
+  });
 };
