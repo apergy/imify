@@ -11,7 +11,7 @@ describe('View', function () {
     describe('#className', function () {
       it('should be the right one', function () {
         var actual = this.messages.className;
-        expect(actual).toBe('message-list');
+        expect(actual).toBe('messages');
       });
     });
   });

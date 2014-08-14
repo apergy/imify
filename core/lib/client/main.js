@@ -1,12 +1,7 @@
 'use strict';
 
-var $ = require('jquery'),
-	app = require('./app');
+var app = require('./app');
 
-$(function () {
-	app.start({
-		environment: process.env.environment || 'development'
-	});
-});
+app.start();
 
 module.exports = window.app = app;

@@ -10,23 +10,23 @@ var Marionette = require('backbone.marionette'),
     app = new Marionette.Application();
 
 app.on('initialize:before', function (options) {
-    app.environment = options.environment;
+  app.environment = options.environment;
 });
 
 app.addRegions({
-    messages: 'section',
-    newMessage: 'footer'
+  messages: 'section',
+  newMessage: 'footer'
 });
 
 app.addInitializer(function () {
-    app.messages.show(new Messages());
-    app.newMessage.show(new NewMessage());
+  app.messages.show(new Messages());
+  app.newMessage.show(new NewMessage());
 });
 
 app.on('initialize:after', function () {
-    if (Backbone.history) {
-        Backbone.history.start();
-    }
+  if (Backbone.history) {
+    Backbone.history.start();
+  }
 });
 
 module.exports = app;
