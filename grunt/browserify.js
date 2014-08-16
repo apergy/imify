@@ -8,11 +8,12 @@ module.exports = function (grunt) {
 
   return {
     options: {
-      transform: [ 'hbsfy' ]
+      transform: [ 'hbsfy' ],
+      bundleOptions: { debug: process.env.GRUNT_ENV === 'development' }
     },
     main: {
-      src: [ './core/lib/client/main.js' ],
-      dest: './dist/js/main.js'
+      src: [ './core/lib/client/app.js' ],
+      dest: './dist/js/app.js'
     },
     src: {
       src: [ './core/lib/client/**/*.js' ],

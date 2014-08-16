@@ -29,4 +29,4 @@ app.on('initialize:after', function () {
   }
 });
 
-module.exports = app;
+module.exports = window.app = app;
