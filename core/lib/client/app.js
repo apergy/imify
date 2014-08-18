@@ -7,8 +7,12 @@ var Backbone = require('backbone');
 var Marionette = require('backbone.marionette'),
     Messages = require('./view/messages'),
     NewMessage = require('./view/newMessage'),
-    entity = require('./factory/entity'),
+    io = require('socket.io-client'),
+    entity = require('./factory/entity');
+
+var socket = io.connect(),
     messages = entity.getMessages(),
+    currentUser = entity.getCurrentUser(),
     app = new Marionette.Application();
 
 app.on('initialize:before', function (options) {
@@ -21,8 +25,15 @@ app.addRegions({
 });
 
 app.addInitializer(function () {
-  app.messages.show(new Messages({ collection: messages }));
-  app.newMessage.show(new NewMessage());
+  app.messages.show(new Messages({
+    collection: messages
+  }));
+
+  app.newMessage.show(new NewMessage({
+    socket: socket,
+    collection: messages,
+    currentUser: currentUser
+  }));
 });
 
 app.on('initialize:after', function () {
