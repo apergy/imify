@@ -14,7 +14,7 @@ module.exports = Backbone.Collection.extend({
    * Gets the socket connections and listens for messages
    */
   initialize: function () {
-    this.socket = io.connect();
+    this.socket = io.connect('/' + window.location.pathname.split('/')[2]);
     this.socket.on('user:join', this.announceUser.bind(this));
     this.socket.on('send:message', this.recieveMessage.bind(this));
   },

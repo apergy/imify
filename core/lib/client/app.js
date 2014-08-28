@@ -10,7 +10,7 @@ var Marionette = require('backbone.marionette'),
     io = require('socket.io-client'),
     entity = require('./factory/entity');
 
-var socket = io.connect(),
+var socket = io.connect('/' + window.location.pathname.split('/')[2]),
     messages = entity.getMessages(),
     currentUser = entity.getCurrentUser(),
     app = new Marionette.Application();
