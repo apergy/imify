@@ -2,7 +2,7 @@
 
 var Backbone = require('backbone'),
     io = require('socket.io-client'),
-    User = require('./../model/user');
+    User = require('../model/user');
 
 module.exports = Backbone.Collection.extend({
   /**

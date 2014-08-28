@@ -11,7 +11,7 @@ module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */
-  template: require('./../template/message.hbs'),
+  template: require('../template/message.hbs'),
 
   /**
    * Gets the current user

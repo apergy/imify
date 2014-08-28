@@ -9,7 +9,7 @@ module.exports = function (grunt) {
   return {
     options: {
       transform: [ 'hbsfy' ],
-      bundleOptions: { debug: process.env.GRUNT_ENV === 'development' }
+      browserifyOptions: { debug: process.env.GRUNT_ENV === 'development' }
     },
     main: {
       src: [ './core/lib/client/app.js' ],
