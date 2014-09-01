@@ -2,7 +2,12 @@
   margin: 10px 0;
   color: $concrete;
 
+  small {
+    display: block;
+  }
+
   p {
+    display: inline-block;
     position: relative;
     margin: 5px 0; padding: 10px;
   }
