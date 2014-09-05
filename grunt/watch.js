@@ -2,14 +2,19 @@
 
 module.exports = function () {
   return {
+    styles: {
+      files: [ './client/styles/**/*.scss' ],
+      tasks: [ 'sass' ],
+      options: { spawn: false }
+    },
     scripts: {
-      files: [ './core/lib/client/**/*.js' ],
+      files: [ './client/scripts/**/*.js' ],
       tasks: [ 'browserify' ],
       options: { spawn: false }
     },
-    styles: {
-      files: [ './core/assets/scss/**/*.scss' ],
-      tasks: [ 'sass' ],
+    specs: {
+      files: [ './specs/**/*.js' ],
+      tasks: [ 'jasmine' ],
       options: { spawn: false }
     }
   };

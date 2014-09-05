@@ -11,5 +11,5 @@ module.exports = Marionette.CollectionView.extend({
   /**
    * @type {Marionette.ItemView}
    */
-  childView: require('../view/message')
+  childView: require('../view/Message')
 });

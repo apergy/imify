@@ -12,21 +12,21 @@ module.exports = function (grunt) {
       browserifyOptions: { debug: process.env.GRUNT_ENV === 'development' }
     },
     main: {
-      src: [ './core/lib/client/app.js' ],
-      dest: './dist/js/app.js'
+      src: [ './client/scripts/app.js' ],
+      dest: './public/js/app.js'
     },
     src: {
-      src: [ './core/lib/client/**/*.js' ],
-      dest: './dist/app_bundle.js',
+      src: [ './client/scripts/**/*.js' ],
+      dest: './build/app_bundle.js',
       options: {
-        require: expandFiles( [ './core/lib/client/**/*.js' ])
+        require: expandFiles( [ './client/scripts/**/*.js' ])
       }
     },
     test: {
-      src: [ './core/test/client/**/*.js' ],
-      dest: './dist/test_bundle.js',
+      src: [ './specs/**/*.js' ],
+      dest: './build/test_bundle.js',
       options: {
-        external: [ './core/lib/client/**/*.js' ]
+        external: [ './client/scripts/**/*.js' ]
       }
     }
   };

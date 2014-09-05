@@ -2,13 +2,13 @@
 
 var Backbone = require('backbone'),
     io = require('socket.io-client'),
-    User = require('../model/user');
+    User = require('./User');
 
 module.exports = Backbone.Collection.extend({
   /**
    * @type {Backbone.Model}
    */
-  model: require('./../model/message'),
+  model: require('./Message'),
 
   /**
    * Gets the socket connections and listens for messages

@@ -4,7 +4,7 @@ module.exports = function () {
   return {
     dist: {
       files: {
-        './dist/css/main.css': './core/assets/scss/main.scss'
+        './public/css/main.css': './client/styles/main.scss'
       }
     }
   };
