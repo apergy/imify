@@ -3,11 +3,11 @@
 module.exports = function () {
   return {
     all: [
-      'Gruntfile.js',
-      'app.js',
-      'grunt/**/*.js',
-      'core/**/*.js'
+      './Gruntfile.js',
+      './app.js',
+      './grunt/**/*.js',
+      './core/**/*.js'
     ],
-    options: { jshintrc: '.jshintrc' }
+    options: { jshintrc: './.jshintrc' }
   };
 };

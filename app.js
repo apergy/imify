@@ -7,7 +7,7 @@ var express = require('express'),
     crypto = require('crypto'),
     socketService = require('./core/lib/server/service/socket');
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (request, response) {
   crypto.randomBytes(4, function (ex, buf) {

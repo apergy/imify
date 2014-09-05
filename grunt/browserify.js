@@ -13,18 +13,18 @@ module.exports = function (grunt) {
     },
     main: {
       src: [ './core/lib/client/app.js' ],
-      dest: './dist/js/app.js'
+      dest: './public/js/app.js'
     },
     src: {
       src: [ './core/lib/client/**/*.js' ],
-      dest: './dist/app_bundle.js',
+      dest: './build/app_bundle.js',
       options: {
         require: expandFiles( [ './core/lib/client/**/*.js' ])
       }
     },
     test: {
       src: [ './core/test/client/**/*.js' ],
-      dest: './dist/test_bundle.js',
+      dest: './build/test_bundle.js',
       options: {
         external: [ './core/lib/client/**/*.js' ]
       }

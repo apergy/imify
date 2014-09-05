@@ -2,10 +2,10 @@
 
 module.exports = function () {
   return {
-    src: 'dist/app_bundle.js',
+    src: './build/app_bundle.js',
     options: {
       keepRunner: process.env.GRUNT_ENV === 'development',
-      specs: 'dist/test_bundle.js'
+      specs: './build/test_bundle.js'
     }
   };
 };
