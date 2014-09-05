@@ -2,7 +2,7 @@
 
 var $ = require('jquery'),
     Backbone = require('backbone'),
-    NewMessageView = require('./../../client/script/view/newMessage');
+    NewMessageView = require('./../../client/scripts/view/newMessage');
 
 describe('View', function () {
   describe('NewMessage', function () {

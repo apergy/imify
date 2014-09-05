@@ -21,7 +21,7 @@ module.exports = {
    * @return {Backbone.Model}
    */
   getCurrentUser: function () {
-    return this.get('currentUser', require('./../entity/User'));
+    return this.get('currentUser', require('./../entities/User'));
   },
 
   /**
@@ -29,6 +29,6 @@ module.exports = {
    * @return {Backbone.Collection}
    */
   getMessages: function () {
-    return this.get('messages', require('./../entity/Messages'));
+    return this.get('messages', require('./../entities/Messages'));
   }
 };
