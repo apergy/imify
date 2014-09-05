@@ -14,7 +14,7 @@ var Marionette = require('backbone.marionette'),
 var socket = io.connect('/' + window.location.pathname.split('/')[2]),
     messages = entity.getMessages(),
     currentUser = entity.getCurrentUser(),
-    app = new Marionette.Application();
+    App = new Marionette.Application();
 
 
 var scrollToBottom = function () {
@@ -26,31 +26,31 @@ var scrollToBottom = function () {
 messages.on('add', scrollToBottom);
 socket.on('send:message', scrollToBottom);
 
-app.on('initialize:before', function (options) {
-  app.environment = options.environment;
+App.on('initialize:before', function (options) {
+  App.environment = options.environment;
 });
 
-app.addRegions({
-  messages: 'section',
-  newMessage: 'footer'
+App.addRegions({
+  content: 'section',
+  footer: 'footer'
 });
 
-app.addInitializer(function () {
-  app.messages.show(new Messages({
+App.addInitializer(function () {
+  App.content.show(new Messages({
     collection: messages
   }));
 
-  app.newMessage.show(new NewMessage({
+  App.footer.show(new NewMessage({
     socket: socket,
     collection: messages,
     currentUser: currentUser
   }));
 });
 
-app.on('initialize:after', function () {
+App.on('initialize:after', function () {
   if (Backbone.history) {
     Backbone.history.start();
   }
 });
 
-module.exports = window.app = app;
+module.exports = window.App = App;
