@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone'),
-    MessageView = require('../../../lib/client/view/message');
+    MessageView = require('./../../client/script/view/message');
 
 describe('View', function () {
   describe('Message', function () {

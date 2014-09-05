@@ -6,7 +6,8 @@ module.exports = function () {
       './Gruntfile.js',
       './app.js',
       './grunt/**/*.js',
-      './core/**/*.js'
+      './client/script/**/*.js',
+      './spec/**/*.js'
     ],
     options: { jshintrc: './.jshintrc' }
   };

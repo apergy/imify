@@ -5,7 +5,7 @@ var express = require('express'),
     server = require('http').Server(app),
     io = require('socket.io')(server),
     crypto = require('crypto'),
-    socketService = require('./core/lib/server/service/socket');
+    socketService = require('./server/service/socket');
 
 app.use(express.static(__dirname + '/public'));
 
