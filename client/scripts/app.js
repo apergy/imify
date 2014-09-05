@@ -6,8 +6,8 @@ var $ = require('jquery'),
     Backbone.$ = $;
 
 var Marionette = require('backbone.marionette'),
-    Messages = require('./view/messages'),
-    NewMessage = require('./view/newMessage'),
+    Messages = require('./view/Messages'),
+    NewMessage = require('./view/NewMessage'),
     io = require('socket.io-client'),
     entity = require('./factory/entity');
 
