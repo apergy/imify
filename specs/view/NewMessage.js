@@ -8,13 +8,12 @@ describe('View', function () {
   describe('NewMessage', function () {
     beforeEach(function () {
       this.fakeSocket = jasmine.createSpyObj('socket', [ 'emit' ]);
+      this.fakeUser = new Backbone.Model();
       this.fakeMessages = new Backbone.Collection();
-      this.fakeCurrentUser = new Backbone.Model();
 
       this.newMessage = new NewMessageView({
-        socket: this.fakeSocket,
         collection: this.fakeMessages,
-        currentUser: this.fakeCurrentUser
+        user: this.fakeUser
       });
 
       this.newMessage.render();
@@ -33,7 +32,7 @@ describe('View', function () {
         this.newMessage.$('input')
           .val('Joe Bloggs')
           .trigger(this.enterPress);
-        expect(this.fakeCurrentUser.get('name')).toBe('Joe Bloggs');
+        expect(this.fakeUser.get('name')).toBe('Joe Bloggs');
       });
 
       it('should show new message after name entered', function () {
@@ -47,7 +46,7 @@ describe('View', function () {
 
     describe('When rendered with a user', function () {
       beforeEach(function () {
-        this.fakeCurrentUser.set('name', 'Joe Bloggs');
+        this.fakeUser.set('name', 'Joe Bloggs');
         this.newMessage.render();
       });
 
@@ -63,19 +62,19 @@ describe('View', function () {
         var actualMessage = this.fakeMessages.at(0);
         expect(actualMessage).toBeDefined();
         expect(actualMessage.get('type')).toBe('to');
-        expect(actualMessage.get('user')).toBe(this.fakeCurrentUser);
+        expect(actualMessage.get('user')).toBe(this.fakeUser);
         expect(actualMessage.get('message')).toBe('Hello World');
       });
 
       it('should emit entered message to socket', function () {
+        this.fakeListener = jasmine.createSpy();
+        this.newMessage.on('message:add', this.fakeListener);
+
         this.newMessage.$('input')
           .val('Hello World')
           .trigger(this.enterPress);
-        expect(this.fakeSocket.emit).toHaveBeenCalledWith('send:message', {
-          type: 'from',
-          user: { name: 'Joe Bloggs' },
-          message: 'Hello World'
-        });
+
+        expect(this.fakeListener).toHaveBeenCalledWith('Hello World');
       });
     });
   });

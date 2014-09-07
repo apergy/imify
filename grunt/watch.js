@@ -14,7 +14,7 @@ module.exports = function () {
     },
     specs: {
       files: [ './specs/**/*.js' ],
-      tasks: [ 'jasmine' ],
+      tasks: [ 'browserify', 'jasmine' ],
       options: { spawn: false }
     }
   };
