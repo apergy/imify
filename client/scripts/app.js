@@ -5,15 +5,9 @@ var Backbone = require('backbone');
     Backbone.$ = require('jquery');
 
 var Marionette = require('backbone.marionette'),
-    Messages = require('./view/Messages'),
-    NewMessage = require('./view/NewMessage'),
-    entity = require('./factory/entity'),
-    service = require('./factory/service');
+    MessagesApp = require('./apps/message/controller');
 
-var socket = service.getSocket(),
-    messages = entity.getMessages(),
-    currentUser = entity.getCurrentUser(),
-    App = new Marionette.Application();
+var App = new Marionette.Application();
 
 App.addRegions({
   content: 'section',
@@ -21,15 +15,7 @@ App.addRegions({
 });
 
 App.addInitializer(function () {
-  App.content.show(new Messages({
-    collection: messages
-  }));
-
-  App.footer.show(new NewMessage({
-    socket: socket,
-    collection: messages,
-    currentUser: currentUser
-  }));
+  new MessagesApp();
 });
 
 App.on('initialize:after', function () {
