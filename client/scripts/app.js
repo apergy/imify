@@ -1,9 +1,8 @@
 'use strict';
 
 // Backbone needs to be given jQuery
-var $ = require('jquery'),
-    Backbone = require('backbone');
-    Backbone.$ = $;
+var Backbone = require('backbone');
+    Backbone.$ = require('jquery');
 
 var Marionette = require('backbone.marionette'),
     Messages = require('./view/Messages'),
@@ -15,15 +14,6 @@ var socket = service.getSocket(),
     messages = entity.getMessages(),
     currentUser = entity.getCurrentUser(),
     App = new Marionette.Application();
-
-var scrollToBottom = function () {
-  $('html, body').animate({
-    scrollTop: $(document).height()
-  });
-};
-
-messages.on('add', scrollToBottom);
-socket.on('send:message', scrollToBottom);
 
 App.on('initialize:before', function (options) {
   App.environment = options.environment;
@@ -47,9 +37,7 @@ App.addInitializer(function () {
 });
 
 App.on('initialize:after', function () {
-  if (Backbone.history) {
-    Backbone.history.start();
-  }
+  Backbone.history.start();
 });
 
 module.exports = window.App = App;
