@@ -15,10 +15,6 @@ var socket = service.getSocket(),
     currentUser = entity.getCurrentUser(),
     App = new Marionette.Application();
 
-App.on('initialize:before', function (options) {
-  App.environment = options.environment;
-});
-
 App.addRegions({
   content: 'section',
   footer: 'footer'
