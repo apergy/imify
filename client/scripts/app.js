@@ -8,14 +8,13 @@ var $ = require('jquery'),
 var Marionette = require('backbone.marionette'),
     Messages = require('./view/Messages'),
     NewMessage = require('./view/NewMessage'),
-    io = require('socket.io-client'),
-    entity = require('./factory/entity');
+    entity = require('./factory/entity'),
+    service = require('./factory/service');
 
-var socket = io.connect('/' + window.location.pathname.split('/')[2]),
+var socket = service.getSocket(),
     messages = entity.getMessages(),
     currentUser = entity.getCurrentUser(),
     App = new Marionette.Application();
-
 
 var scrollToBottom = function () {
   $('html, body').animate({
