@@ -12,7 +12,7 @@ module.exports = Marionette.CollectionView.extend({
   /**
    * @type {Marionette.ItemView}
    */
-  childView: require('../view/Message'),
+  childView: require('./Message'),
 
   /**
    * Scrolls the page to the latest message

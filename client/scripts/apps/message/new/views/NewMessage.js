@@ -11,7 +11,7 @@ module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */
-  template: require('../template/newMessage.hbs'),
+  template: require('./../templates/newMessage.hbs'),
 
   /**
    * @type {Object}

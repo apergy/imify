@@ -5,7 +5,7 @@ var Backbone = require('backbone');
     Backbone.$ = require('jquery');
 
 var Marionette = require('backbone.marionette'),
-    MessagesApp = require('./apps/message/controller');
+    MessageApp = require('./apps/message/MessageApp');
 
 var App = new Marionette.Application();
 
@@ -15,7 +15,7 @@ App.addRegions({
 });
 
 App.addInitializer(function () {
-  new MessagesApp();
+  new MessageApp();
 });
 
 App.on('initialize:after', function () {
