@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone'),
-    MessagesView = require('./../../../../../client/scripts/apps/message/list/views/Messages');
+    MessagesView = require('./../../../../client/apps/message/views/Messages');
 
 describe('View', function () {
   describe('Messages', function () {

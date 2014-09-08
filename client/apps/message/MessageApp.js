@@ -3,8 +3,8 @@
 var Marionette = require('backbone.marionette'),
     entity = require('./../../factory/entity'),
     service = require('./../../factory/service'),
-    MessagesView = require('./list/views/Messages'),
-    NewMessageView = require('./new/views/NewMessage');
+    MessagesView = require('./views/Messages'),
+    NewMessageView = require('./views/NewMessage');
 
 module.exports = Marionette.Controller.extend({
   /**

@@ -3,12 +3,12 @@
 module.exports = function () {
   return {
     styles: {
-      files: [ './client/styles/**/*.scss' ],
+      files: [ './styles/**/*.scss' ],
       tasks: [ 'sass' ],
       options: { spawn: false }
     },
     scripts: {
-      files: [ './client/scripts/**/*.js' ],
+      files: [ './client/**/*.js' ],
       tasks: [ 'browserify' ],
       options: { spawn: false }
     },
