@@ -3,18 +3,18 @@
 module.exports = function () {
   return {
     styles: {
-      files: [ './client/styles/**/*.scss' ],
+      files: [ './styles/**/*.scss' ],
       tasks: [ 'sass' ],
       options: { spawn: false }
     },
     scripts: {
-      files: [ './client/scripts/**/*.js' ],
+      files: [ './client/**/*.js' ],
       tasks: [ 'browserify' ],
       options: { spawn: false }
     },
     specs: {
       files: [ './specs/**/*.js' ],
-      tasks: [ 'jasmine' ],
+      tasks: [ 'browserify', 'jasmine' ],
       options: { spawn: false }
     }
   };

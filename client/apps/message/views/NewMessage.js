@@ -11,7 +11,7 @@ module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */
-  template: require('../template/newMessage.hbs'),
+  template: require('./../templates/newMessage.hbs'),
 
   /**
    * @type {Object}
@@ -25,8 +25,7 @@ module.exports = Marionette.ItemView.extend({
    * @param  {Object} options
    */
   initialize: function (options) {
-    this.socket = options.socket;
-    this.currentUser = options.currentUser;
+    this.user = options.user;
   },
 
   /**
@@ -36,7 +35,7 @@ module.exports = Marionette.ItemView.extend({
   persistEntry: function (event) {
     if (event.keyCode === 13 && event.target.value) {
       event.preventDefault();
-      var isLoggedIn = this.currentUser.has('name');
+      var isLoggedIn = this.user.has('name');
       this[!isLoggedIn ? 'setName' : 'addMessage'](event.target.value);
       this.render();
     }
@@ -47,10 +46,8 @@ module.exports = Marionette.ItemView.extend({
    * @param {String} name
    */
   setName: function (name) {
-    this.currentUser.set('name', name);
-    this.socket.emit('user:join', {
-      user: this.currentUser.toJSON()
-    });
+    this.user.set('name', name);
+    this.trigger('name:set', this.user);
   },
 
   /**
@@ -60,15 +57,11 @@ module.exports = Marionette.ItemView.extend({
   addMessage: function (message) {
     this.collection.add({
       type: 'to',
-      user: this.currentUser,
+      user: this.user,
       message: message
     });
 
-    this.socket.emit('send:message', {
-      type: 'from',
-      user: this.currentUser.toJSON(),
-      message: message
-    });
+    this.trigger('message:add', message);
   },
 
   /**
@@ -76,7 +69,7 @@ module.exports = Marionette.ItemView.extend({
    * @return {String}
    */
   placeholder: function () {
-    return !this.currentUser.has('name') ?
+    return !this.user.has('name') ?
       'Whats your name?' :
       'Enter a message...';
   },
