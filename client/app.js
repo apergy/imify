@@ -5,7 +5,8 @@ var Backbone = require('backbone');
     Backbone.$ = require('jquery');
 
 var Marionette = require('backbone.marionette'),
-    MessageApp = require('./apps/message/MessageApp');
+    MessageApp = require('./apps/message/MessageApp'),
+    UserApp = require('./apps/user/UserApp');
 
 var App = new Marionette.Application();
 
@@ -15,11 +16,20 @@ App.addRegions({
 });
 
 App.addInitializer(function () {
-  new MessageApp();
+  this.messageApp = new MessageApp();
+  this.userApp = new UserApp();
+
+  this.userApp.on('name:set', function () {
+    App.footer.show(this.messageApp.newMessageView);
+  }, this);
+
+  App.content.show(this.messageApp.messagesView);
+  App.footer.show(this.userApp.newUserView);
 });
 
 App.on('initialize:after', function () {
   Backbone.history.start();
+  Backbone.$('input').focus();
 });
 
 module.exports = window.App = App;

@@ -17,11 +17,7 @@ module.exports = Marionette.Controller.extend({
 
     this.messagesView = this.getMessagesView(this.messages);
     this.newMessageView = this.getNewMessageView(this.messages);
-    this.newMessageView.on('name:set', this.emitUser, this);
-    this.newMessageView.on('message:add', this.emitMessage, this);
-
-    window.App.content.show(this.messagesView);
-    window.App.footer.show(this.newMessageView);
+    this.newMessageView.on('message:send', this.sendMessage, this);
   },
 
   /**
@@ -39,26 +35,23 @@ module.exports = Marionette.Controller.extend({
    * @return {Marionette.ItemView}
    */
   getNewMessageView: function (messages) {
-    return new NewMessageView({ collection: messages, user: this.user });
+    return new NewMessageView({ collection: messages });
   },
 
   /**
    * Sends message to the other users
    * @param  {String} message
    */
-  emitMessage: function (message) {
+  sendMessage: function (message) {
+    this.messages.add({
+      type: 'to',
+      message: message,
+      user: this.user
+    });
+
     this.socket.emit('send:message', {
-      type: 'from',
       message: message,
       user: this.user.toJSON()
     });
-  },
-
-  /**
-   * Tells other users the user has joined
-   * @param  {Object} user
-   */
-  emitUser: function (user) {
-    this.socket.emit('user:join', { user: user.toJSON() });
   }
 });

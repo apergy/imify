@@ -7,29 +7,29 @@ module.exports = Marionette.ItemView.extend({
   /**
    * @type {String}
    */
-  className: 'new-message',
+  className: 'new-user',
 
   /**
    * @type {String}
    */
-  template: require('./../templates/newMessage.hbs'),
+  template: require('./../templates/newUser.hbs'),
 
   /**
    * @type {Object}
    */
   events: {
-    'keypress input': 'sendMessage'
+    'keypress input': 'setName'
   },
 
   /**
-   * Chooses to set users name or add a message
+   * Triggers a user set name event
    * @param  {Object} event
    */
-  sendMessage: function (event) {
+  setName: function (event) {
     if (event.keyCode === 13 && event.target.value) {
       event.preventDefault();
-      this.trigger('message:send', event.target.value);
-      event.target.value = '';
+      this.model.set('name', event.target.value);
+      this.trigger('name:set', this.model);
     }
   },
 
