@@ -5,7 +5,8 @@ module.exports = function () {
     src: './build/app_bundle.js',
     options: {
       keepRunner: process.env.GRUNT_ENV === 'development',
-      specs: './build/test_bundle.js'
+      specs: './build/test_bundle.js',
+      vendor: './public/js/vendor.js'
     }
   };
 };

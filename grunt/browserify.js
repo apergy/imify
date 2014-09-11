@@ -11,14 +11,46 @@ module.exports = function (grunt) {
       transform: [ 'hbsfy' ],
       browserifyOptions: { debug: process.env.GRUNT_ENV === 'development' }
     },
-    main: {
+    app: {
       src: [ './client/app.js' ],
-      dest: './public/js/app.js'
+      dest: './public/js/app.js',
+      options: {
+        external: [
+          'jquery',
+          'underscore',
+          'backbone',
+          'backbone.marionette',
+          'handlebars',
+          'socket.io-client'
+        ]
+      }
+    },
+    vendor: {
+      src: [ '.' ],
+      dest: './public/js/vendor.js',
+      options: {
+        require: [
+          'jquery',
+          'underscore',
+          'backbone',
+          'backbone.marionette',
+          'handlebars',
+          'socket.io-client'
+        ]
+      }
     },
     src: {
       src: [ './client/**/*.js' ],
       dest: './build/app_bundle.js',
       options: {
+        external: [
+          'jquery',
+          'underscore',
+          'backbone',
+          'backbone.marionette',
+          'handlebars',
+          'socket.io-client'
+        ],
         require: expandFiles( [ './client/**/*.js' ])
       }
     },
@@ -26,7 +58,15 @@ module.exports = function (grunt) {
       src: [ './specs/**/*.js' ],
       dest: './build/test_bundle.js',
       options: {
-        external: [ './client/**/*.js' ]
+        external: [
+          'jquery',
+          'underscore',
+          'backbone',
+          'backbone.marionette',
+          'handlebars',
+          'socket.io-client',
+          './client/**/*.js'
+        ]
       }
     }
   };
