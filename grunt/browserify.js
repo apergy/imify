@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    src: {
+    app_bundle: {
       src: [ './client/**/*.js' ],
       dest: './build/app_bundle.js',
       options: {
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
         require: expandFiles( [ './client/**/*.js' ])
       }
     },
-    test: {
+    test_bundle: {
       src: [ './specs/**/*.js' ],
       dest: './build/test_bundle.js',
       options: {
