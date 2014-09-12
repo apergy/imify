@@ -1,8 +1,10 @@
 'use strict';
 
-var Marionette = require('backbone.marionette'),
+var _ = require('underscore'),
+    Marionette = require('backbone.marionette'),
     entity = require('./../../factory/entity'),
     service = require('./../../factory/service'),
+    User = require('./../../entities/User'),
     MessagesView = require('./views/Messages'),
     NewMessageView = require('./views/NewMessage');
 
@@ -14,6 +16,9 @@ module.exports = Marionette.Controller.extend({
     this.socket = service.getSocket();
     this.user = entity.getCurrentUser();
     this.messages = entity.getMessages();
+
+    this.socket.on('user:join', _.bind(this.announceUser, this));
+    this.socket.on('message:send', _.bind(this.recieveMessage, this));
 
     this.messagesView = this.getMessagesView(this.messages);
     this.newMessageView = this.getNewMessageView(this.messages);
@@ -49,9 +54,29 @@ module.exports = Marionette.Controller.extend({
       user: this.user
     });
 
-    this.socket.emit('send:message', {
+    this.socket.emit('message:send', {
       message: message,
       user: this.user.toJSON()
+    });
+  },
+
+  /**
+   * Announces a new user has joined
+   * @param  {Object} data
+   */
+  announceUser: function (data) {
+    this.messages.add({ type: 'system', user: new User(data.user) });
+  },
+
+  /**
+   * Adds a new message recieved from socket
+   * @param {Object} data
+   */
+  recieveMessage: function (data) {
+    this.messages.add({
+      type: 'from',
+      user: new User(data.user),
+      message: data.message
     });
   }
 });

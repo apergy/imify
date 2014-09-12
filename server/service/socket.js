@@ -5,7 +5,7 @@ module.exports = function (socket) {
     socket.broadcast.emit('user:join', data);
   });
 
-  socket.on('send:message', function (data) {
-    socket.broadcast.emit('send:message', data);
+  socket.on('message:send', function (data) {
+    socket.broadcast.emit('message:send', data);
   });
 };
