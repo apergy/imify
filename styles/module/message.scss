@@ -1,6 +1,6 @@
 .message {
-  margin: 10px 0;
   color: $concrete;
+  margin: 10px 0;
 
   small {
     display: block;
@@ -8,19 +8,19 @@
 
   p {
     display: inline-block;
-    position: relative;
     margin: 5px 0; padding: 10px;
+    position: relative;
   }
 
   p:before {
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
     position: absolute;
     top: 10px;
-    display: block;
-    content: "";
     width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
   }
 }
 
@@ -32,14 +32,14 @@
   text-align: right;
 
   p {
-    margin-left: 100px;
     background: $peter-river;
     color: $clouds;
+    margin-left: 100px;
   }
 
   p:before {
-    right: -5px;
     border-left: 10px solid $peter-river;
+    right: -5px;
   }
 }
 
@@ -47,13 +47,13 @@
   text-align: left;
 
   p {
-    margin-right: 100px;
     background: $silver;
     color: $midnight-blue;
+    margin-right: 100px;
   }
 
   p:before {
-    left: -5px;
     border-right: 10px solid $silver;
+    left: -5px;
   }
 }
