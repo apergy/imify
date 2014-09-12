@@ -32,6 +32,6 @@ module.exports = Marionette.Controller.extend({
    */
   sendUser: function (user) {
     this.trigger('name:set', user);
-    this.socket.emit('user:join', { user: user.toJSON() });
+    this.socket.emit('user:join', user.toJSON());
   }
 });

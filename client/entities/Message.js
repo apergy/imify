@@ -8,7 +8,8 @@ module.exports = Backbone.Model.extend({
     var message = Backbone.Model.prototype.toJSON.call(this);
     return _.extend({}, message, {
       user: message.user.toJSON(),
-      isSystem: message.type === 'system'
+      isJoin: message.type === 'join',
+      isLeave: message.type === 'leave'
     });
   }
 });

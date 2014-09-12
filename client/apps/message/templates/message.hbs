@@ -1,6 +1,14 @@
-{{#if isSystem}}
+{{#if isJoin}}
   <small>{{user.name}} has joined.</small>
-{{else}}
+{{/if}}
+
+{{#if isLeave}}
+  <small>{{user.name}} has left.</small>
+{{/if}}
+
+{{#unless isJoin}}
+{{#unless isLeave}}
   <small>{{user.name}}</small>
   <p>{{message}}</p>
-{{/if}}
+{{/unless}}
+{{/unless}}

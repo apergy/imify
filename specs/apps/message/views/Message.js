@@ -9,7 +9,8 @@ describe('View', function () {
       beforeEach(function () {
         this.fakeMessage = new Backbone.Model({
           type: 'from',
-          isSystem: false,
+          isJoin: false,
+          isLeave: false,
           user: { name: 'Joe Bloggs' },
           message: 'Hello World'
         });
@@ -37,7 +38,8 @@ describe('View', function () {
       beforeEach(function () {
         this.fakeMessage = new Backbone.Model({
           type: 'to',
-          isSystem: false,
+          isJoin: false,
+          isLeave: false,
           user: { name: 'Joe Bloggs' },
           message: 'Hello World'
         });
@@ -61,11 +63,12 @@ describe('View', function () {
       });
     });
 
-    describe('When from the system', function () {
+    describe('When about a joiner', function () {
       beforeEach(function () {
         this.fakeMessage = new Backbone.Model({
-          type: 'system',
-          isSystem: true,
+          type: 'join',
+          isJoin: true,
+          isLeave: false,
           user: { name: 'Joe Bloggs' }
         });
 
@@ -73,13 +76,40 @@ describe('View', function () {
         this.message.render();
       });
 
-      it('should have class "system"', function () {
-        expect(this.message.$el.hasClass('system')).toBeTruthy();
+      it('should have class "join"', function () {
+        expect(this.message.$el.hasClass('join')).toBeTruthy();
       });
 
       it('should say the user has joined in a <small> tag', function () {
         var actual = this.message.$('small').text();
         expect(actual).toBe('Joe Bloggs has joined.');
+      });
+
+      it('should NOT have a message in a <p> tag', function () {
+        expect(this.message.$('p').length).toBe(0);
+      });
+    });
+
+    describe('When about a leaver', function () {
+      beforeEach(function () {
+        this.fakeMessage = new Backbone.Model({
+          type: 'leave',
+          isJoin: false,
+          isLeave: true,
+          user: { name: 'Joe Bloggs' }
+        });
+
+        this.message = new MessageView({ model: this.fakeMessage });
+        this.message.render();
+      });
+
+      it('should have class "leave"', function () {
+        expect(this.message.$el.hasClass('leave')).toBeTruthy();
+      });
+
+      it('should say the user has joined in a <small> tag', function () {
+        var actual = this.message.$('small').text();
+        expect(actual).toBe('Joe Bloggs has left.');
       });
 
       it('should NOT have a message in a <p> tag', function () {

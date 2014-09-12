@@ -15,7 +15,7 @@
   p:before {
     border-bottom: 10px solid transparent;
     border-top: 10px solid transparent;
-    content: "";
+    content: '';
     display: block;
     height: 0;
     position: absolute;
@@ -24,7 +24,7 @@
   }
 }
 
-.system {
+.join, .leave {
   text-align: center;
 }
 

@@ -17,7 +17,8 @@ module.exports = Marionette.Controller.extend({
     this.user = entity.getCurrentUser();
     this.messages = entity.getMessages();
 
-    this.socket.on('user:join', _.bind(this.announceUser, this));
+    this.socket.on('user:join', _.bind(this.announceUserJoin, this));
+    this.socket.on('user:leave', _.bind(this.announceUserLeave, this));
     this.socket.on('message:send', _.bind(this.recieveMessage, this));
 
     this.messagesView = this.getMessagesView(this.messages);
@@ -64,8 +65,16 @@ module.exports = Marionette.Controller.extend({
    * Announces a new user has joined
    * @param  {Object} data
    */
-  announceUser: function (data) {
-    this.messages.add({ type: 'system', user: new User(data.user) });
+  announceUserJoin: function (data) {
+    this.messages.add({ type: 'join', user: new User(data) });
+  },
+
+  /**
+   * Announces a user has left
+   * @param  {Object} data
+   */
+  announceUserLeave: function (data) {
+    this.messages.add({ type: 'leave', user: new User(data) });
   },
 
   /**
