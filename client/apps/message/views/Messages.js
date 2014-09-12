@@ -1,7 +1,6 @@
 'use strict';
 
-var $ = require('jquery'),
-    Marionette = require('backbone.marionette');
+var Marionette = require('backbone.marionette');
 
 module.exports = Marionette.CollectionView.extend({
   /**
@@ -15,11 +14,9 @@ module.exports = Marionette.CollectionView.extend({
   childView: require('./Message'),
 
   /**
-   * Scrolls the page to the latest message
+   * Scrolls the container to the latest message
    */
   onAddChild: function () {
-    $('html, body').animate({
-      scrollTop: $(document).height()
-    });
+    this.$el.parent().animate({ scrollTop: this.$el.height() });
   },
 });
