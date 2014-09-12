@@ -1,3 +1,11 @@
 .messages {
   padding: 0 10px;
+
+  .message time {
+    display: none;
+  }
+
+  .message:last-child time {
+    display: block;
+  }
 }

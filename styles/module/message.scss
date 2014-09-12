@@ -22,9 +22,15 @@
     top: 10px;
     width: 0;
   }
+
+  time {
+    display: block;
+    font-size: 10px;
+  }
 }
 
-.join, .leave {
+.join,
+.leave {
   text-align: center;
 }
 

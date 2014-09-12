@@ -52,7 +52,8 @@ module.exports = Marionette.Controller.extend({
     this.messages.add({
       type: 'to',
       message: message,
-      user: this.user
+      user: this.user,
+      datetime: JSON.parse(JSON.stringify(new Date()))
     });
 
     this.socket.emit('message:send', {
@@ -85,7 +86,8 @@ module.exports = Marionette.Controller.extend({
     this.messages.add({
       type: 'from',
       user: new User(data.user),
-      message: data.message
+      message: data.message,
+      datetime: JSON.parse(JSON.stringify(new Date()))
     });
   }
 });
