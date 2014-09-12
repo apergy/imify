@@ -1,8 +1,16 @@
 .messages {
   padding: 0 10px;
 
+  .message p:before {
+    display: none;
+  }
+
   .message time {
     display: none;
+  }
+
+  .message:last-child p:before {
+    display: block;
   }
 
   .message:last-child time {

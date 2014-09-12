@@ -63,3 +63,12 @@
     left: -5px;
   }
 }
+
+.to.pull-up,
+.from.pull-up {
+  margin-top: -15px;
+
+  small {
+    display: none;
+  }
+}

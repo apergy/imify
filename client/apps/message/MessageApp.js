@@ -13,12 +13,10 @@ module.exports = Marionette.Controller.extend({
    * Shows the messages and new message view
    */
   initialize: function () {
-    this.socket = service.getSocket();
     this.user = entity.getCurrentUser();
     this.messages = entity.getMessages();
 
-    this.socket.on('user:join', _.bind(this.announceUserJoin, this));
-    this.socket.on('user:leave', _.bind(this.announceUserLeave, this));
+    this.socket = service.getSocket();
     this.socket.on('message:send', _.bind(this.recieveMessage, this));
 
     this.messagesView = this.getMessagesView(this.messages);
@@ -60,22 +58,6 @@ module.exports = Marionette.Controller.extend({
       message: message,
       user: this.user.toJSON()
     });
-  },
-
-  /**
-   * Announces a new user has joined
-   * @param  {Object} data
-   */
-  announceUserJoin: function (data) {
-    this.messages.add({ type: 'join', user: new User(data) });
-  },
-
-  /**
-   * Announces a user has left
-   * @param  {Object} data
-   */
-  announceUserLeave: function (data) {
-    this.messages.add({ type: 'leave', user: new User(data) });
   },
 
   /**

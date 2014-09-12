@@ -14,9 +14,11 @@ module.exports = Marionette.ItemView.extend({
   template: require('./../templates/message.hbs'),
 
   /**
-   * Gets the current user
+   * Adds the type as a class and pulls message
+   * upwards if from same previous user
    */
-  initialize: function () {
+  onRender: function () {
     this.$el.addClass(this.model.get('type'));
+    this.$el.toggleClass('pull-up', this.model.samePreviousUser());
   }
 });
