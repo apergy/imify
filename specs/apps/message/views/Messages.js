@@ -1,55 +1,51 @@
 'use strict';
 
-var Backbone = require('backbone'),
+var User = require('./../../../../client/entities/User'),
+    Messages = require('./../../../../client/entities/Messages'),
     MessagesView = require('./../../../../client/apps/message/views/Messages');
 
 describe('View', function () {
   describe('Messages', function () {
+    beforeEach(function () {
+      this.messages = new Messages();
+      this.messagesView = new MessagesView({ collection: this.messages });
+      this.messagesView.render();
+    });
+
     describe('When no messages', function () {
-      beforeEach(function () {
-        this.fakeMessages = new Backbone.Collection();
-
-        this.messages = new MessagesView({ collection: this.fakeMessages });
-        this.messages.render();
-      });
-
       it('should be empty', function () {
-        expect(this.messages.$el.children().length).toBe(0);
+        expect(this.messagesView.$el.children().length).toBe(0);
       });
     });
 
     describe('When one message and one added', function () {
       beforeEach(function () {
-        this.fakeMessages = new Backbone.Collection([ {} ]);
-        this.messages = new MessagesView({ collection: this.fakeMessages });
-        this.messages.render();
+        this.messages.add({ user: new User() });
       });
 
       it('should show one message', function () {
-        expect(this.messages.$el.children().length).toBe(1);
+        expect(this.messagesView.$el.children().length).toBe(1);
       });
 
       it('should now show two messages', function () {
-        this.fakeMessages.add({});
-        expect(this.messages.$el.children().length).toBe(2);
+        this.messages.add({ user: new User() });
+        expect(this.messagesView.$el.children().length).toBe(2);
       });
     });
 
     describe('When two messages and one removed', function () {
       beforeEach(function () {
-        this.fakeMessages = new Backbone.Collection([ {}, {} ]);
-        this.messages = new MessagesView({ collection: this.fakeMessages });
-        this.messages.render();
+        this.messages.add({ user: new User() });
+        this.messages.add({ user: new User() });
       });
 
       it('should show two messages', function () {
-        expect(this.messages.$el.children().length).toBe(2);
+        expect(this.messagesView.$el.children().length).toBe(2);
       });
 
       it('should now show one message', function () {
-        var model = this.fakeMessages.at(1);
-        this.fakeMessages.remove([ model ]);
-        expect(this.messages.$el.children().length).toBe(1);
+        this.messages.remove([ this.messages.at(1) ]);
+        expect(this.messagesView.$el.children().length).toBe(1);
       });
     });
   });
