@@ -36,7 +36,7 @@ describe('View', function () {
 
       it('should have the formatted time in a <time> tag', function () {
         var actual = this.messageView.$('time').text();
-        expect(actual).toBe('Sent at 00:20');
+        expect(actual).toBe('Sent at ' + this.message.getFormattedTime());
       });
     });
 
@@ -62,7 +62,7 @@ describe('View', function () {
 
       it('should have the formatted time in a <time> tag', function () {
         var actual = this.messageView.$('time').text();
-        expect(actual).toBe('Sent at 00:20');
+        expect(actual).toBe('Sent at ' + this.message.getFormattedTime());
       });
     });
 
