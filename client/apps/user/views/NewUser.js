@@ -10,7 +10,7 @@ module.exports = Marionette.ItemView.extend({
   className: 'new-user',
 
   /**
-   * @type {String}
+   * @type {Function}
    */
   template: require('./../templates/newUser.hbs'),
 

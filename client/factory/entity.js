@@ -25,6 +25,14 @@ module.exports = {
   },
 
   /**
+   * Returns the users
+   * @return {Backbone.Collection}
+   */
+  getUsers: function () {
+    return this.get('users', require('./../entities/Users'));
+  },
+
+  /**
    * Returns the messages
    * @return {Backbone.Collection}
    */

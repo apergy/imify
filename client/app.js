@@ -11,6 +11,7 @@ var Marionette = require('backbone.marionette'),
 var App = new Marionette.Application();
 
 App.addRegions({
+  sidebar: 'aside',
   content: 'section',
   footer: 'footer'
 });
@@ -23,6 +24,7 @@ App.addInitializer(function () {
     App.footer.show(this.messageApp.newMessageView);
   }, this);
 
+  App.sidebar.show(this.userApp.usersView);
   App.content.show(this.messageApp.messagesView);
   App.footer.show(this.userApp.newUserView);
 });

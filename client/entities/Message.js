@@ -56,8 +56,6 @@ module.exports = Backbone.Model.extend({
     var message = Backbone.Model.prototype.toJSON.call(this);
     return _.extend({}, message, {
       user: message.user.toJSON(),
-      isJoin: message.type === 'join',
-      isLeave: message.type === 'leave',
       formattedTime: this.getFormattedTime(),
       samePreviousUser: this.samePreviousUser()
     });
