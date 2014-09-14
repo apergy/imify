@@ -2,20 +2,26 @@
 
 var User = require('./../../../../client/entities/User'),
     Messages = require('./../../../../client/entities/Messages'),
-    MessageView = require('./../../../../client/apps/message/views/Message');
+    MessageView = require('./../../../../client/apps/message/views/Message'),
+    entity = require('./../../../../client/factory/entity');
 
 describe('View', function () {
   describe('Message', function () {
     beforeEach(function () {
+      spyOn(entity, 'getCurrentUser').and.returnValue(new User({
+        id: '1',
+        name: 'Jane Bloggs'
+      }));
+
       this.messages = new Messages([ {
-        type: 'from',
-        user: new User({ name: 'Joe Bloggs' }),
+        user: { id: '2', name: 'Joe Bloggs' },
         message: 'Hello World',
         datetime: '2014-09-12T23:20:37.993Z'
       } ]);
 
       this.message = this.messages.at(0);
       this.messageView = new MessageView({ model: this.message });
+
       this.messageView.render();
     });
 
@@ -42,7 +48,7 @@ describe('View', function () {
 
     describe('When to someone', function () {
       beforeEach(function () {
-        this.message.set('type', 'to');
+        this.message.set('user', { id: '1', name: 'Jane Bloggs' });
         this.messageView.render();
       });
 
@@ -52,7 +58,7 @@ describe('View', function () {
 
       it('should have users name in a <small> tag', function () {
         var actual = this.messageView.$('small').text();
-        expect(actual).toBe('Joe Bloggs');
+        expect(actual).toBe('Jane Bloggs');
       });
 
       it('should have the message in a <p> tag', function () {

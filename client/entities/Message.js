@@ -1,9 +1,19 @@
 'use strict';
 
 var _ = require('underscore'),
-    Backbone = require('backbone');
+    Backbone = require('backbone'),
+    entity = require('./../factory/entity'),
+    service = require('./../factory/service');
 
 module.exports = Backbone.Model.extend({
+  /**
+   * Gets the current user and socket
+   */
+  initialize: function () {
+    this.user = entity.getCurrentUser();
+    this.socket = service.getSocket();
+  },
+
   /**
    * Returns the index of current model in collection
    * @return {Integer}
@@ -27,7 +37,15 @@ module.exports = Backbone.Model.extend({
   samePreviousUser: function () {
     var previous = this.getPrevious();
     return !!previous && previous.has('user') && this.has('user') &&
-      previous.get('user').get('name') === this.get('user').get('name');
+      previous.get('user').name === this.get('user').name;
+  },
+
+  /**
+   * Returns the direction type of message
+   * @return {String}
+   */
+  getType: function () {
+    return this.user.id === this.get('user').id ? 'to' : 'from';
   },
 
   /**
@@ -55,9 +73,18 @@ module.exports = Backbone.Model.extend({
   toJSON: function () {
     var message = Backbone.Model.prototype.toJSON.call(this);
     return _.extend({}, message, {
-      user: message.user.toJSON(),
       formattedTime: this.getFormattedTime(),
       samePreviousUser: this.samePreviousUser()
     });
+  },
+
+  /**
+   * Emits sync events via socket for CRUD actions
+   * @param  {String} type
+   * @param  {Backbone.Collection} entity
+   * @param  {Object} options
+   */
+  sync: function (type, entity, options) {
+    this.socket.emit('messages:' + type, entity.toJSON(), options.success);
   }
 });

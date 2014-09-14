@@ -20,7 +20,7 @@ App.addInitializer(function () {
   this.messageApp = new MessageApp();
   this.userApp = new UserApp();
 
-  this.userApp.on('name:set', function () {
+  this.userApp.on('user:current:set', function () {
     App.footer.show(this.messageApp.newMessageView);
   }, this);
 

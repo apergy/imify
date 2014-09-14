@@ -19,7 +19,7 @@ module.exports = Marionette.Controller.extend({
 
     this.usersView = this.getUsersView(this.users);
     this.newUserView = this.getNewUserView(this.user);
-    this.newUserView.on('name:set', this.sendUser, this);
+    this.newUserView.on('user:current:set', this.sendUser, this);
   },
 
   /**
@@ -45,7 +45,9 @@ module.exports = Marionette.Controller.extend({
    * @param  {Backbone.Model} user
    */
   sendUser: function (user) {
-    this.trigger('name:set', user);
-    this.socket.emit('user:join', user.toJSON());
+    this.trigger('user:current:set', user);
+    this.socket.emit('users:create', user.toJSON(), function (data) {
+      user.set(data); // Updates the current user with an ID
+    });
   }
 });

@@ -29,7 +29,7 @@ module.exports = Marionette.ItemView.extend({
     if (event.keyCode === 13 && event.target.value) {
       event.preventDefault();
       this.model.set('name', event.target.value);
-      this.trigger('name:set', this.model);
+      this.trigger('user:current:set', this.model);
     }
   },
 

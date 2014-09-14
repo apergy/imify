@@ -13,11 +13,6 @@ module.exports = Backbone.Collection.extend({
   /**
    * @type {String}
    */
-  url: 'users',
-
-  /**
-   * @type {String}
-   */
   comparator: 'name',
 
   /**
@@ -25,8 +20,8 @@ module.exports = Backbone.Collection.extend({
    */
   initialize: function () {
     this.socket = service.getSocket();
-    this.socket.on('user:join', _.bind(this.addUser, this));
-    this.socket.on('user:leave', _.bind(this.removeUser, this));
+    this.socket.on('users:create', _.bind(this.addUser, this));
+    this.socket.on('users:delete', _.bind(this.removeUser, this));
   },
 
   /**
@@ -52,6 +47,6 @@ module.exports = Backbone.Collection.extend({
    * @param  {Object} options
    */
   sync: function (type, entity, options) {
-    this.socket.emit(this.url + ':' + type, entity.toJSON(), options.success);
+    this.socket.emit('users:' + type, entity.toJSON(), options.success);
   }
 });

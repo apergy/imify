@@ -18,7 +18,7 @@ module.exports = Marionette.ItemView.extend({
    * upwards if from same previous user
    */
   onRender: function () {
-    this.$el.addClass(this.model.get('type'));
+    this.$el.addClass(this.model.getType());
     this.$el.toggleClass('pull-up', this.model.samePreviousUser());
   }
 });

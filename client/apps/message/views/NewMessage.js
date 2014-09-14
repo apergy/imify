@@ -28,7 +28,7 @@ module.exports = Marionette.ItemView.extend({
   sendMessage: function (event) {
     if (event.keyCode === 13 && event.target.value) {
       event.preventDefault();
-      this.trigger('message:send', event.target.value);
+      this.collection.sendMessage(event.target.value);
       event.target.value = '';
     }
   },
