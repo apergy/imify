@@ -16,5 +16,12 @@ module.exports = Marionette.ItemView.extend({
   /**
    * @type {Function}
    */
-  template: require('./../templates/user.hbs')
+  template: require('./../templates/user.hbs'),
+
+  /**
+   * @type {Object}
+   */
+  modelEvents: {
+    change: 'render'
+  }
 });

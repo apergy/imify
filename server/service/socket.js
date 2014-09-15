@@ -52,4 +52,12 @@ module.exports = function (roomId, socket) {
   socket.on('message:send', function (data) {
     socket.broadcast.emit('message:send', data);
   });
+
+  socket.on('typing:started', function (data) {
+    socket.broadcast.emit('typing:started', data);
+  });
+
+  socket.on('typing:stopped', function (data) {
+    socket.broadcast.emit('typing:stopped', data);
+  });
 };
