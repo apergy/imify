@@ -4,8 +4,7 @@ var Marionette = require('backbone.marionette'),
     entity = require('./../../factory/entity'),
     service = require('./../../factory/service'),
     UsersView = require('./views/Users'),
-    NewUserView = require('./views/NewUser'),
-    _ = require('underscore');
+    NewUserView = require('./views/NewUser');
 
 module.exports = Marionette.Controller.extend({
   /**
@@ -21,9 +20,6 @@ module.exports = Marionette.Controller.extend({
     this.usersView = this.getUsersView(this.users);
     this.newUserView = this.getNewUserView(this.user);
     this.newUserView.on('user:current:set', this.sendUser, this);
-
-    window.addEventListener('focus', _.bind(this.userFocused, this));
-    window.addEventListener('blur', _.bind(this.userBlured, this));
   },
 
   /**
@@ -53,19 +49,5 @@ module.exports = Marionette.Controller.extend({
     this.socket.emit('users:create', user.toJSON(), function (data) {
       user.set(data); // Updates the current user with an ID
     });
-  },
-
-  /**
-   * Sets the user as focused
-   */
-  userFocused: function () {
-    this.user.set('focused', true);
-  },
-
-  /**
-   * Sets the user as unfocused
-   */
-  userBlured: function () {
-    this.user.set('focused', false);
   }
 });

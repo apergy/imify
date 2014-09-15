@@ -5,8 +5,9 @@ var Backbone = require('backbone');
     Backbone.$ = require('jquery');
 
 var Marionette = require('backbone.marionette'),
+    UserApp = require('./apps/user/UserApp'),
     MessageApp = require('./apps/message/MessageApp'),
-    UserApp = require('./apps/user/UserApp');
+    NotificationApp = require('./apps/notification/NotificationApp');
 
 var App = new Marionette.Application();
 
@@ -17,8 +18,9 @@ App.addRegions({
 });
 
 App.addInitializer(function () {
-  this.messageApp = new MessageApp();
   this.userApp = new UserApp();
+  this.messageApp = new MessageApp();
+  this.notificationApp = new NotificationApp();
 
   this.userApp.on('user:current:set', function () {
     App.footer.show(this.messageApp.newMessageView);

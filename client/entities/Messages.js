@@ -25,8 +25,6 @@ module.exports = Backbone.Collection.extend({
 
     this.socket = service.getSocket();
     this.socket.on('messages:create', _.bind(this.recieveMessage, this));
-
-    this.defaultTitle = document.title;
   },
 
   /**
@@ -47,12 +45,6 @@ module.exports = Backbone.Collection.extend({
    */
   recieveMessage: function (message) {
     this.add(message);
-
-    if (!this.user.get('focused')) {
-      clearInterval(this.titleInterval);
-      this.notificationTitle = message.user.name + ' sent you a message...';
-      this.titleInterval = setInterval(_.bind(this.toggleTitle, this), 2000);
-    }
   },
 
   /**
@@ -63,26 +55,5 @@ module.exports = Backbone.Collection.extend({
    */
   sync: function (type, entity, options) {
     this.socket.emit('messages:' + type, entity.toJSON(), options.success);
-  },
-
-  /**
-   * Toggles the title from default to notifcation
-   * NOTE: When user is re-focused it resets the title
-   */
-  toggleTitle: function () {
-    document.title = document.title === this.defaultTitle ?
-      this.notificationTitle : this.defaultTitle;
-
-    if (this.user.get('focused')) {
-      this.resetTitle();
-    }
-  },
-
-  /**
-   * Resets the title back to default and clear interval
-   */
-  resetTitle: function () {
-    clearInterval(this.titleInterval);
-    document.title = this.defaultTitle;
   }
 });
