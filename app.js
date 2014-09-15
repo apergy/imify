@@ -5,6 +5,7 @@ var express = require('express'),
     server = require('http').Server(app),
     io = require('socket.io')(server),
     crypto = require('crypto'),
+    _ = require('underscore'),
     socketService = require('./server/service/socket');
 
 app.use(express.static(__dirname + '/public'));
@@ -25,7 +26,7 @@ app.get('/chat/:id', function (request, response) {
   // new connections on each room the once
   if (room === undefined) {
     room = rooms[roomId] = io.of('/' + roomId);
-    room.on('connection', socketService);
+    room.on('connection', _.partial(socketService, roomId));
   }
 
   response.sendfile('index.html');
