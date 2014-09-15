@@ -4,10 +4,11 @@ var _ = require('underscore'),
     Users = require('./../entities/Users'),
     Messages = require('./../entities/Messages');
 
-var users = new Users(),
-    messages = new Messages();
 
 module.exports = function (socket) {
+  var users = new Users(),
+      messages = new Messages();
+
   socket.on('users:read', function (data, callback) {
     callback(users.toJSON());
   });
