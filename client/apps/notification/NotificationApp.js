@@ -48,7 +48,7 @@ module.exports = Marionette.Controller.extend({
   },
 
   /**
-   * Toggles the title from default to notifcation
+   * Toggles the title from default to notification
    * NOTE: When user is re-focused it resets the title
    */
   toggleTitle: function () {
