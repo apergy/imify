@@ -20,7 +20,7 @@ describe('View', function () {
 
     describe('When one message and one added', function () {
       beforeEach(function () {
-        this.messages.add({ user: new User() });
+        this.messages.add({ user: new User(), message: '' });
       });
 
       it('should show one message', function () {
@@ -28,15 +28,15 @@ describe('View', function () {
       });
 
       it('should now show two messages', function () {
-        this.messages.add({ user: new User() });
+        this.messages.add({ user: new User(), message: '' });
         expect(this.messagesView.$el.children().length).toBe(2);
       });
     });
 
     describe('When two messages and one removed', function () {
       beforeEach(function () {
-        this.messages.add({ user: new User() });
-        this.messages.add({ user: new User() });
+        this.messages.add({ user: new User(), message: '' });
+        this.messages.add({ user: new User(), message: '' });
       });
 
       it('should show two messages', function () {

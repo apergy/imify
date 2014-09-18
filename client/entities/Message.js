@@ -7,6 +7,13 @@ var _ = require('underscore'),
 
 module.exports = Backbone.Model.extend({
   /**
+   * @type {Object}
+   */
+  defaults: {
+    readers: []
+  },
+
+  /**
    * Gets the current user and socket
    */
   initialize: function () {

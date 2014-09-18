@@ -10,6 +10,12 @@
     display: inline-block;
     margin: 5px 0; padding: 10px;
     position: relative;
+
+    > img {
+      height: 18px;
+      vertical-align: text-bottom;
+      width: 18px;
+    }
   }
 
   p:before {
