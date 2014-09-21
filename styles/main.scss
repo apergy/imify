@@ -21,6 +21,7 @@ $asbestos: #7f8c8d;
 
 @import 'base';
 @import 'layout';
+@import 'module/header';
 @import 'module/messages';
 @import 'module/message';
 @import 'module/newMessage';
@@ -28,9 +29,18 @@ $asbestos: #7f8c8d;
 @import 'module/users';
 @import 'module/user';
 
+
+
 body {
   background: $clouds;
   font-family: Helvetica Neue;
   font-size: 16px;
   padding-bottom: 60px;
+
+  &.sidebar-open {
+    header { left: 70%; right: -70%; }
+    aside { left: 0; }
+    section { left: 70%; right: -70%; }
+    footer { left: 70%; right: -70%; }
+  }
 }

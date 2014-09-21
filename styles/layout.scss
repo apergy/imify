@@ -1,24 +1,39 @@
-body > aside {
-  background: $silver;
-  bottom: 0;
+body > header {
   left: 0;
   overflow: auto;
   position: fixed;
+  right: 0;
   top: 0;
+  transition: left 500ms ease;
+  z-index: 99;
+}
+
+body > aside {
+  background: $silver;
+  bottom: 0;
+  box-shadow: inset -1.5em 0 1.5em -.75em rgba(0, 0, 0, .25);
+  left: -70%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  transition: all 500ms ease;
+  width: 70%;
 }
 
 body > section {
   bottom: 61px;
-  left: 200px;
+  left: 0;
   overflow: auto;
   position: fixed;
   right: 0;
-  top: 0;
+  top: 44px;
+  transition: all 500ms ease;
 }
 
 body > footer {
   bottom: 0;
-  left: 200px;
+  left: 0;
   position: fixed;
   right: 0;
+  transition: all 500ms ease;
 }

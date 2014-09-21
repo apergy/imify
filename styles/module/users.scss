@@ -1,7 +1,9 @@
 .users {
   h3 {
     background: $concrete;
+    box-shadow: inset -1.5em 0 1.5em -.75em rgba(0, 0, 0, .25);
     color: $clouds;
+    font-size: 19px;
     margin: 0;
     padding: 10px 15px;
   }
@@ -10,6 +12,5 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    width: 200px;
   }
 }

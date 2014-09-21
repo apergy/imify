@@ -5,6 +5,7 @@ var Backbone = require('backbone');
     Backbone.$ = require('jquery');
 
 var Marionette = require('backbone.marionette'),
+    HeaderApp = require('./apps/header/HeaderApp'),
     UserApp = require('./apps/user/UserApp'),
     MessageApp = require('./apps/message/MessageApp'),
     NotificationApp = require('./apps/notification/NotificationApp');
@@ -12,12 +13,14 @@ var Marionette = require('backbone.marionette'),
 var App = new Marionette.Application();
 
 App.addRegions({
+  header: 'header',
   sidebar: 'aside',
   content: 'section',
   footer: 'footer'
 });
 
 App.addInitializer(function () {
+  this.headerApp = new HeaderApp();
   this.userApp = new UserApp();
   this.messageApp = new MessageApp();
   this.notificationApp = new NotificationApp();
@@ -26,6 +29,7 @@ App.addInitializer(function () {
     App.footer.show(this.messageApp.newMessageView);
   }, this);
 
+  App.header.show(this.headerApp.headerView);
   App.sidebar.show(this.userApp.usersView);
   App.content.show(this.messageApp.messagesView);
   App.footer.show(this.userApp.newUserView);
