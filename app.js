@@ -2,8 +2,8 @@
 
 var express = require('express'),
     app = express(),
-    server = require('http').Server(app),
-    io = require('socket.io')(server),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server),
     crypto = require('crypto'),
     _ = require('underscore'),
     socketService = require('./server/service/socket');
