@@ -1,7 +1,7 @@
 'use strict';
 
 var Marionette = require('backbone.marionette'),
-    emojione = require('./../../../../node_modules/emojione/lib/js/emojione').emojione;
+    emojione = require('./../../../../node_modules/emojione/lib/js/emojione');
 
 // Turns on :) emojis
 emojione.ascii = true;
